@@ -1,0 +1,181 @@
+<div class="printing-options">
+    <ul>
+        <li>
+            <button class="btn" ng-click="modal.close()">
+                <i class="fa fa-times fa-fw"></i>Close</button>
+        </li>
+        <li>
+            <button class="btn" ng-click="modal.print()">
+                <i class="fa fa-print fa-fw"></i>Print</button>
+        </li>
+        <!-- <li>
+            <select ng-model="modal.printer">
+                <option ng-repeat="x in modal.printers">{{x.name}}</option>
+            </select>
+        </li> -->
+    </ul>
+</div>
+<div id="print-ack" class="printing-page">
+    <div class="whole-report">
+        <div class="header">
+            <strong>Pueblo Golf Estates Home Owners Association, Inc.</strong>
+            <span>Masterson Avenue, Upper Canitoan, Cagayan de Oro City, 9000</span>
+            <span>Contact No.: 09551367134&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: pgehai.bod@gmail.com</span>
+        </div>
+        <div class="body">
+            <div class="title">
+                <strong>ACKNOWLEDGEMENT FORM</strong>
+            </div>
+            <div class="form">
+                <div class="flex bottom-margin">
+                    <div class="flex">
+                        <div>Date :&nbsp;</div>
+                        <div class="border-bottom w-100p text-center">{{ modal.variables.TDate}}</div>
+                    </div>
+                    <div class="w-350p"></div>
+                    <div class="flex">
+                        <div>Series :&nbsp;</div>
+                        <div class="border-bottom w-150p text-center">{{modal.variables.AcknowledgementFormNo}}</div>
+                    </div>
+                </div>
+                <div class="bottom-margin">
+                    <div class="flex">
+                        <div>Customer Name :&nbsp;</div>
+                        <div class="border-bottom w-580p">{{modal.variables.FullName}}</div>
+                    </div>
+                </div>
+                <div class="bottom-margin">
+                    <div class="flex">
+                        <div>Address :&nbsp;</div>
+                        <div class="border-bottom w-630p">{{modal.variables.Address}}</div>
+                    </div>
+
+                </div>
+                <div class="bottom-margin">
+                    <div class="flex">
+                        <div>Particulars :&nbsp;</div>
+                        <div class="border-bottom w-612p">{{modal.variables.RemarksReport}}</div>
+                    </div>
+                </div>
+                <div class="bottom-margin">
+                    <div class="flex">
+                        <div>In the total amount of:&nbsp;</div>
+                        <div class="border-bottom w-548p">{{modal.variables.AmountInWords}}</div>
+                    </div>
+                </div>
+                <div class="flex bottom-margin">
+                    <div class="flex wrap">
+                        <div>Mode of Payment :&nbsp;</div>
+                        <div class="border-bottom w-150p">{{modal.variables.ModesTotal}}</div>
+                    </div>
+                    <div class="w-50p"></div>
+                    <div class="flex" ng-if="!modal.cashOnly">
+                        <div>Check Details :&nbsp;</div>
+                        <div class="flex-column">
+                            <div ng-repeat="x in modal.checkDetails">{{x.CardNo}}/{{x.Date}}/{{x.Bank}}</div>
+                            <div class="border-top f10p">Check No/ Check Date/ Bank</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-margin">
+                    <div class="flex">
+                        <div>Total Amount Received :&nbsp;</div>
+                        <div class="border-bottom">Php {{ modal.variables.TotalAmountActualPaid | number : 2}}</div>
+                    </div>
+                </div>
+                <div class="bottom-margin">
+                    Received and Acknowledged by:
+                </div>
+                <div class="text-center w-200p border-bottom">
+                    {{modal.userName}}
+                </div>
+                <div class="flex">
+                    <div class="w-500p"></div>
+                    <div>PGHAI COPY</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-break"></div>
+    <div class="whole-report">
+        <div class="header">
+            <strong>Pueblo Golf Estates Home Owners Association, Inc.</strong>
+            <span>Masterson Avenue, Upper Canitoan, Cagayan de Oro City, 9000</span>
+            <span>Contact No.: 09551367134&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: pgehai.bod@gmail.com</span>
+        </div>
+        <div class="body">
+            <div class="title">
+                <strong>ACKNOWLEDGEMENT FORM</strong>
+            </div>
+            <div class="form">
+                <div class="flex bottom-margin">
+                    <div class="flex">
+                        <div>Date :&nbsp;</div>
+                        <div class="border-bottom w-100p text-center">{{ modal.variables.TDate}}</div>
+                    </div>
+                    <div class="w-350p"></div>
+                    <div class="flex">
+                        <div>Series :&nbsp;</div>
+                        <div class="border-bottom w-150p text-center">{{modal.variables.AcknowledgementFormNo}}</div>
+                    </div>
+                </div>
+                <div class="bottom-margin">
+                    <div class="flex">
+                        <div>Customer Name :&nbsp;</div>
+                        <div class="border-bottom w-580p">{{modal.variables.FullName}}</div>
+                    </div>
+                </div>
+                <div class="bottom-margin">
+                    <div class="flex">
+                        <div>Address :&nbsp;</div>
+                        <div class="border-bottom w-630p">{{modal.variables.Address}}</div>
+                    </div>
+
+                </div>
+                <div class="bottom-margin">
+                    <div class="flex">
+                        <div>Particulars :&nbsp;</div>
+                        <div class="border-bottom w-612p">{{modal.variables.RemarksReport}}</div>
+                    </div>
+                </div>
+                <div class="bottom-margin">
+                    <div class="flex">
+                        <div>In the total amount of:&nbsp;</div>
+                        <div class="border-bottom w-548p">{{modal.variables.AmountInWords}}</div>
+                    </div>
+                </div>
+                <div class="flex bottom-margin">
+                    <div class="flex wrap">
+                        <div>Mode of Payment :&nbsp;</div>
+                        <div class="border-bottom w-150p">{{modal.variables.ModesTotal}}</div>
+                    </div>
+                    <div class="w-50p"></div>
+                    <div class="flex" ng-if="!modal.cashOnly">
+                        <div>Check Details :&nbsp;</div>
+                        <div class="flex-column">
+                            <div ng-repeat="x in modal.checkDetails">{{x.CardNo}}/{{x.Date}}/{{x.Bank}}</div>
+                            <div class="border-top f10p">Check No/ Check Date/ Bank</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-margin">
+                    <div class="flex">
+                        <div>Total Amount Received :&nbsp;</div>
+                        <div class="border-bottom">Php {{ modal.variables.TotalAmountActualPaid | number : 2}}</div>
+                    </div>
+                </div>
+                <div class="bottom-margin">
+                    Received and Acknowledged by:
+                </div>
+                <div class="text-center w-200p border-bottom">
+                    {{modal.userName}}
+                </div>
+                <div class="flex">
+                    <div class="w-500p"></div>
+                    <div>MEMBER COPY</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="end-page"></div>
+</div>

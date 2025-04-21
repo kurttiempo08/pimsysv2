@@ -1,0 +1,92 @@
+<div class="animated fadeIn" ng-controller="LedgerCtrl as vm">
+    <div class="progress-card">
+        <div class="progress-card-header">
+            <h3>Ledger</h3>
+            <ul>
+                <li ng-class="{active: vm.menu === 'monthly'}">
+                    <a ng-click="vm.changeBox(1)">Monthly Ledger</a>
+                </li>
+                <li ng-class="{active: vm.menu === 'annual'}">
+                    <a ng-click="vm.changeBox(2)">Annual Ledger</a>
+                </li>
+                <li ng-class="{active: vm.menu === 'construction'}">
+                    <a ng-click="vm.changeBox(3)">Construction Bond Ledger</a>
+                </li>
+            </ul>
+        </div>
+        <div class="progress-card-body">
+            <form ng-submit="vm.runAging()">
+                <div class="animated fadeIn">
+                    <div class="col-md-2">
+                        <div class="floating-label">
+                            <div class="group-input">
+                                <input type="text" class="form-control" ng-model="vm.MHOLID" disabled>
+                                <label ng-class="{'float':vm.MHOLID}">MHOLID</label>
+                                <div class="button-group-append">
+                                    <button type="button" class="btn" ng-click="vm.openModal()">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="floating-label">
+                            <input type="text" class="form-control" ng-model="vm.name" disabled>
+                            <label ng-class="{'float':vm.name}">Homeowner</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="floating-label">
+                            <input type="text" class="form-control" ng-model="vm.address" disabled>
+                            <label ng-class="{'float':vm.address}">Blk-Lot/Cluster</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2 parallel-button">
+                        <button class="btn btn-md btn-success" type="submit">Run
+                            Ledger</button>
+                    </div>
+                    <div class="col-md-2" ng-if="vm.menu === 'monthly'">
+                        <div class="floating-label">
+                            <input type="text" class="form-control text-right" ng-model="vm.balance1" disabled>
+                            <label ng-class="{'float':vm.balance1}">Balance</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2" ng-if="vm.menu === 'annual'">
+                        <div class="floating-label">
+                            <input type="text" class="form-control text-right" ng-model="vm.balance2" disabled>
+                            <label ng-class="{'float':vm.balance2}">Balance</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2" ng-if="vm.menu === 'construction'">
+                        <div class="floating-label">
+                            <input type="text" class="form-control text-right" ng-model="vm.balance3" disabled>
+                            <label ng-class="{'float':vm.balance3}">Balance</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form ng-if="vm.menu === 'monthly'">
+                <div class="animated fadeIn">
+                    <div class="col-md-12">
+                        <div class="modal-grid-with-buttons bottom-margin" style="height:600px;" ui-grid="vm.defaultGrid1" ui-grid-selection ui-grid-resize-columns></div>
+                    </div>
+                </div>
+            </form>
+            <form ng-if="vm.menu === 'annual'">
+                <div class="animated fadeIn">
+                    <div class="col-md-12">
+                        <div class="modal-grid-with-buttons bottom-margin" style="height:600px;" ui-grid="vm.defaultGrid2" ui-grid-selection ui-grid-resize-columns></div>
+                    </div>
+                </div>
+            </form>
+            <form ng-if="vm.menu === 'construction'">
+                <div class="animated fadeIn">
+                    <div class="col-md-12">
+                        <div class="modal-grid-with-buttons bottom-margin" style="height:600px;" ui-grid="vm.defaultGrid3" ui-grid-selection ui-grid-resize-columns></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

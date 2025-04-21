@@ -1,0 +1,308 @@
+<div class="animated fadeIn" ng-controller="MemberRegCtrl as vm">
+	<div class="progress-card">
+		<div class="progress-card-header">
+			<h3>Member/Home Owner Registration Form</h3>
+		</div>
+		<div class="progress-card-body">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="floating-label">
+						<div class="group-input">
+							<input type="text" class="form-control" ng-model="vm.variables.MHOLID" disabled>
+							<label ng-class="{'float':vm.variables.MHOLID}">MHOLID</label>
+							<div class="button-group-append">
+								<button type="button" class="btn" ng-click="vm.openModal()">
+									<i class="fa fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.MemberStatus">
+						<label ng-class="{'float':vm.variables.MemberStatus}">Member Status</label>
+					</div>
+				</div> -->
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.LastName">
+						<label ng-class="{'float':vm.variables.LastName}">Lastname</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.FirstName">
+						<label ng-class="{'float':vm.variables.FirstName}">FirstName</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.MiddleName">
+						<label ng-class="{'float':vm.variables.MiddleName}">Middlename</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.ExtName">
+						<label ng-class="{'float':vm.variables.ExtName}">Extname</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.ContactNo">
+						<label ng-class="{'float':vm.variables.ContactNo}">Contact No</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.MobileNo1">
+						<label ng-class="{'float':vm.variables.MobileNo1}">Mobile No.1</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.MobileNo2">
+						<label ng-class="{'float':vm.variables.MobileNo2}">Mobile No.2</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.EmailAddress">
+						<label ng-class="{'float':vm.variables.EmailAddress}">Email Address</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.OwnerProvAddress">
+						<label ng-class="{'float':vm.variables.OwnerProvAddress}">Owner other prov. address</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.OtherContactPerson">
+						<label ng-class="{'float':vm.variables.OtherContactPerson}">Owner other contact #</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variablesdtl.Property_acquired_date" datepicker="" dp-format="mm/dd/yyyy" ng-class="{'glow': vm.variables.DateOfBirth}">
+                        <label ng-class="{'float': vm.variablesdtl.Property_acquired_date}">Acquired Date</label>
+					</div>
+				</div>
+				
+				<!-- <div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.PhaseCluster">
+						<label ng-class="{'float':vm.variables.PhaseCluster}">Phase/Cluster</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.BlockNo">
+						<label ng-class="{'float':vm.variables.BlockNo}">Block No</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.LotNo">
+						<label ng-class="{'float':vm.variables.LotNo}">Lot No</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.Street">
+						<label ng-class="{'float':vm.variables.Street}">Street</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.Subdivision">
+						<label ng-class="{'float':vm.variables.Subdivision}">Subdivision</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.Barangay">
+						<label ng-class="{'float':vm.variables.Barangay}">Barangay</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.City">
+						<label ng-class="{'float':vm.variables.City}">City</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.Province">
+						<label ng-class="{'float':vm.variables.Province}">Province</label>
+					</div>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="floating-label">
+						<select class="form-control" ng-model="vm.variables.Category">
+							<option></option>
+							<option value="LOT">LOT</option>
+							<option value="house and lot">HOUSE AND LOT</option>
+						</select>
+						<label ng-class="{'float':vm.variables.Category}">Category</label>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="floating-label">
+						<input type="text" class="form-control" ng-model="vm.variables.LotAreaSqM">
+						<label ng-class="{'float':vm.variables.LotAreaSqM}">Lot area sq meter</label>
+					</div>
+				</div>
+				
+				<div class="col-md-12">
+					<div class="floating-label">
+						<textarea rows="5" class="form-control" ng-model="vm.variables.Remarks" style="resize: none;"></textarea>
+						<label ng-class="{'float':vm.variables.Remarks}">Remarks</label>
+					</div>
+				</div> -->
+
+			</div>
+			<div class="row">
+				<div class="col-md-9">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.variablesdtl.PhaseCluster">
+								<label ng-class="{'float':vm.variablesdtl.PhaseCluster}">Phase/Cluster</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.variablesdtl.BlockNo">
+								<label ng-class="{'float':vm.variablesdtl.BlockNo}">Block No</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.variablesdtl.LotNo">
+								<label ng-class="{'float':vm.variablesdtl.LotNo}">Lot No</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.variablesdtl.Street">
+								<label ng-class="{'float':vm.variablesdtl.Street}">Street</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.variablesdtl.Subdivision">
+								<label ng-class="{'float':vm.variablesdtl.Subdivision}">Subdivision</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.variablesdtl.Barangay">
+								<label ng-class="{'float':vm.variablesdtl.Barangay}">Barangay</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.variablesdtl.City">
+								<label ng-class="{'float':vm.variablesdtl.City}">City</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.variablesdtl.Province">
+								<label ng-class="{'float':vm.variablesdtl.Province}">Province</label>
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="floating-label">
+								<select class="form-control" ng-model="vm.variablesdtl.Category">
+									<option></option>
+									<option value="LOT">LOT</option>
+									<option value="house and lot">HOUSE AND LOT</option>
+								</select>
+								<label ng-class="{'float':vm.variablesdtl.Category}">Category</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.variablesdtl.LotAreaSqM">
+								<label ng-class="{'float':vm.variablesdtl.LotAreaSqM}">Lot area sq meter</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.variablesdtl.OwnershipType">
+								<label ng-class="{'float':vm.variablesdtl.OwnershipType}">Ownership type</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.variablesdtl.Contract_num">
+								<label ng-class="{'float':vm.variablesdtl.Contract_num}">Contract #</label>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<div class="floating-label">
+								<textarea rows="5" class="form-control" ng-model="vm.variablesdtl.Remarks" style="resize: none;"></textarea>
+								<label ng-class="{'float':vm.variablesdtl.Remarks}">Remarks</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="floating-label">
+								<input type="text" class="form-control" ng-model="vm.search">
+								<label ng-class="{'float':vm.search}">Search contract</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div style="height: 240px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="row">
+					<div class="col-md-12 text-right">
+						<button type="button" ng-click="vm.openHistory(1)" class="btn btn-sm btn-warning">
+							<b>View Renter History</b>
+						</button>
+						<button type="button" ng-click="vm.openHistory(2)" class="btn btn-sm btn-warning">
+							<b>View Property History</b>
+						</button>
+						<button type="button" ng-click="vm.setPrevious()" class="btn btn-sm btn-warning">
+							<b>Transfer property</b>
+						</button>
+						<button type="button" ng-click="vm.save(1)" class="btn btn-sm btn-success">
+							<b>Save Member</b>
+						</button>
+						<button type="button" ng-click="vm.save(2)" class="btn btn-sm btn-success">
+							<b>Save Property</b>
+						</button>
+						<button type="button" ng-click="vm.save(3)" class="btn btn-sm btn-success">
+							<b>Update Property Status</b>
+						</button>
+						<button type="button" ng-click="vm.clearFunction()" class="btn btn-sm btn-primary">
+							<b>Clear all</b>
+						</button>
+						<button type="button" ng-click="vm.clearProperty()" class="btn btn-sm btn-primary">
+							<b>Clear property</b>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+</div>
+</div>

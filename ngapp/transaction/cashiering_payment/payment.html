@@ -1,0 +1,145 @@
+<div class="animated fadeIn">
+    <div class="row bottom-margin">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Total Amount Due: Php {{vm.variables.TotalAmountPayable | number: 2}}</h4>
+                </div>
+                <div class="col-md-6">
+                    <h4>Total Payment: Php {{vm.variables.TotalAmountActualPaid | number: 2}}</h4>
+                </div>
+            </div>
+            <div style="height: 250px;" ui-grid="vm.paymentGrid" ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Select Mode of Payment</h4>
+                </div>
+                <div class="col-md-6">
+                    <div class="floating-label">
+                        <select class="form-control" ng-model="vm.payment.Mode" ng-class="{'glow': vm.payment.Mode}" required>
+                            <option></option>
+                            <option>CASH</option>
+                            <option>CHECK</option>
+                            <option>CREDIT CARD</option>
+                            <option>BANK DEPOSIT</option>
+                        </select>
+                        <label ng-class="{'float': vm.payment.Mode}">Mode of Payment</label>
+                    </div>
+                </div>
+                <div class="col-md-6" ng-if="vm.payment.Mode === 'CASH'">
+                    <div class="floating-label">
+                        <input type="text" class="form-control text-right" ng-model="vm.payment.AmountTender" ng-class="{'glow': vm.payment.AmountTender}"
+                            only-numbers-wo-negative ng-required="vm.payment.Mode === 'CASH'">
+                        <label ng-class="{'float': vm.payment.AmountTender}">Amount</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="vm.payment.Mode === 'CHECK'">
+                <div class="col-md-6">
+                    <div class="floating-label ">
+                        <input type="text" class="form-control" ng-model="vm.payment.TranCheckDate" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.payment.TranCheckDate}"
+                            ng-required="vm.payment.Mode === 'CHECK'">
+                        <label ng-class="{'float': vm.payment.TranCheckDate}">Date</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="floating-label ">
+                        <input type="text" class="form-control" ng-model="vm.payment.CardCheckBank" ng-class="{'glow': vm.payment.CardCheckBank}"
+                            ng-required="vm.payment.Mode === 'CHECK'">
+                        <label ng-class="{'float': vm.payment.CardCheckBank}">Check Bank</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="floating-label ">
+                        <input type="text" class="form-control" ng-model="vm.payment.CardCheckNo" ng-class="{'glow': vm.payment.CardCheckNo}" ng-required="vm.payment.Mode === 'CHECK'">
+                        <label ng-class="{'float': vm.payment.CardCheckNo}">Check No.</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="floating-label">
+                        <input type="text" class="form-control text-right" ng-model="vm.payment.AmountTender" ng-class="{'glow': vm.payment.AmountTender}"
+                            only-numbers-wo-negative ng-required="vm.payment.Mode === 'CHECK'">
+                        <label ng-class="{'float': vm.payment.AmountTender}">Amount</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="vm.payment.Mode === 'CREDIT CARD'">
+                <div class="col-md-6">
+                    <div class="floating-label ">
+                        <input type="text" class="form-control" ng-model="vm.payment.CardCheckNo" ng-class="{'glow': vm.payment.CardCheckNo}" ng-required="vm.payment.Mode === 'CREDIT CARD'">
+                        <label ng-class="{'float': vm.payment.CardCheckNo}">Card No.</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="floating-label ">
+                        <input type="text" class="form-control" ng-model="vm.payment.CardCheckBank" ng-class="{'glow': vm.payment.CardCheckBank}"
+                            ng-required="vm.payment.Mode === 'CREDIT CARD'">
+                        <label ng-class="{'float': vm.payment.CardCheckBank}">Card Name</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="floating-label ">
+                        <input type="text" class="form-control" ng-model="vm.payment.DepRefNo" ng-class="{'glow': vm.payment.DepRefNo}" ng-required="vm.payment.Mode === 'CREDIT CARD'">
+                        <label ng-class="{'float': vm.payment.DepRefNo}">Ref No.</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="floating-label">
+                        <input type="text" class="form-control text-right" ng-model="vm.payment.AmountTender" ng-class="{'glow': vm.payment.AmountTender}"
+                            only-numbers-wo-negative ng-required="vm.payment.Mode === 'CREDIT CARD'">
+                        <label ng-class="{'float': vm.payment.AmountTender}">Amount</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="vm.payment.Mode === 'BANK DEPOSIT'">
+                <div class="col-md-6">
+                    <div class="floating-label ">
+                        <input type="text" class="form-control" ng-model="vm.payment.TranCheckDate" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.payment.TranCheckDate}"
+                            ng-required="vm.payment.Mode === 'BANK DEPOSIT'">
+                        <label ng-class="{'float': vm.payment.TranCheckDate}">Trans Date</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="floating-label ">
+                        <input type="text" class="form-control" ng-model="vm.payment.CardCheckBank" ng-class="{'glow': vm.payment.CardCheckBank}"
+                            ng-required="vm.payment.Mode === 'BANK DEPOSIT'">
+                        <label ng-class="{'float': vm.payment.CardCheckBank}">Bank</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="floating-label ">
+                        <input type="text" class="form-control" ng-model="vm.payment.DepRefNo" ng-class="{'glow': vm.payment.DepRefNo}" ng-required="vm.payment.Mode === 'BANK DEPOSIT'">
+                        <label ng-class="{'float': vm.payment.DepRefNo}">Deposit Slip/Ref. No.</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="floating-label">
+                        <input type="text" class="form-control text-right" ng-model="vm.payment.AmountTender" ng-class="{'glow': vm.payment.AmountTender}"
+                            only-numbers-wo-negative ng-required="vm.payment.Mode === 'BANK DEPOSIT'">
+                        <label ng-class="{'float': vm.payment.AmountTender}">Amount</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12 bottom-margin">
+                <button class="btn btn-skyblue" type="button" ng-click="vm.changeBox('Header', 1)">
+                    <i class="fa fa-chevron-left fa-fw"></i> Go Back to Header</button>
+                <button class="btn btn-success" type="button" ng-click="vm.tenderPayment()">
+                    <i class="fa fa-clipboard"></i>&nbsp;Tender Payment</button>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 text-right">
+                <button class="btn btn-danger" type="button" ng-click="vm.deletePayment()" ng-if="vm.payment.TPDID">
+                    <i class="fa fa-trash"></i>&nbsp;Delete</button>
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-save"></i>&nbsp;Save</button>
+                <button type="button" class="btn btn-default" ng-click="vm.clearPayments()">
+                    <i class="fa fa-times fa-fw"></i>Clear</button>
+            </div>
+        </div>
+    </div>
+</div>

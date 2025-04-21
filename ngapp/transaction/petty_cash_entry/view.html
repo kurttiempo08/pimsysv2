@@ -1,0 +1,87 @@
+<div class="animated fadeIn" ng-controller="PettyCashCtrl as vm">
+    <div class="progress-card">
+        <div class="progress-card-header">
+            <h3>Petty Cash Voucher</h3>
+        </div>
+    </div>
+    <div class="progress-card-body">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="floating-label">
+                    <div class="group-input">
+                        <input type="text" class="form-control" ng-model="vm.ID" disabled>
+                        <label ng-class="{'float':vm.ID}">Voucher ID</label>
+                        <div class="button-group-append">
+                            <button type="button" class="btn" ng-click="vm.openModal()">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="floating-label">
+                    <input type="text" class="form-control bold" ng-model="vm.SeriesNo">
+                    <label ng-class="{'float':vm.SeriesNo}">Series No</label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="floating-label">
+                    <input type="date" class="form-control bold" ng-model="vm.ID">
+                    <label ng-class="{'float':vm.ID}">Voucher Date</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control bold" ng-model="vm.ID">
+                    <label ng-class="{'float':vm.ID}">Company</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control bold" ng-model="vm.ID">
+                    <label ng-class="{'float':vm.ID}">Branch</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="floating-label">
+                    <input type="text" class="form-control bold" ng-model="vm.Payee">
+                    <label ng-class="{'float':vm.Payee}">Payee</label>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="floating-label">
+                    <input type="text" class="form-control bold" ng-model="vm.PayeeAddress">
+                    <label ng-class="{'float':vm.PayeeAddress}">Designation</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="floating-label">
+                            <textarea ng-model="vm.variables.Explanation" class="form-control"></textarea>
+                            <label ng-class="{'float':vm.Payee}">Explainations</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="row" ng-if="vm.filtered.length > 0">
+            <div class="col-md-12">
+                <div class="modal-grid-with-buttons bottom-margin" style="height:600px;" ui-grid="vm.defaultGrid" ui-grid-selection ui-grid-resize-columns></div>
+            </div>
+        </div>
+    </div>
+</div>

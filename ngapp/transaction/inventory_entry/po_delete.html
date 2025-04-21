@@ -1,0 +1,24 @@
+<div class="modal-content">
+    <div class="modal-title-div">
+        <strong class="modal-title-name">Search Purchase Order</strong>
+        <button class="modal-exit" ng-click="modal.close()">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Deleting an entire PO will delete all transactions link in this PO.</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="floating-label">
+                    <!-- <input type="text" class="form-control" ng-model="vm.variablesdtl.description" ng-class="{'glow': vm.variablesdtl.description}" disabled> -->
+                    <textarea type="text" class="form-control" ng-model="modal.variables.reason" rows="4" disabled></textarea>
+                    <label ng-class="{'float':modal.variables.reason}" >Reason of deleting.</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

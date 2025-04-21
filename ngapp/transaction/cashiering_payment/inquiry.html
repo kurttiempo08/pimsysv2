@@ -1,0 +1,43 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-3 col-xs-4">
+            <div class="floating-label">
+                <select class="form-control" ng-model="vm.inquiry.searchBy" ng-class="{'glow': vm.inquiry.searchBy}" required>
+                    <option></option>
+                    <option ng-value="1">OR No</option>
+                    <option ng-value="2">Transaction Date</option>
+                </select>
+                <label ng-class="{'float': vm.inquiry.searchBy}">Search By</label>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-6" ng-if="vm.inquiry.searchBy == 1">
+            <div class="floating-label">
+                <input type="text" class="form-control" ng-model="vm.inquiry.ORNo" ng-class="{'glow': vm.inquiry.ORNo}" required>
+                <label ng-class="{'float': vm.inquiry.ORNo}">Type O.R No</label>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-3" ng-if="vm.inquiry.searchBy == 2">
+            <div class="floating-label ">
+                <input type="text" class="form-control" ng-model="vm.inquiry.DateFrom" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.inquiry.DateFrom}">
+                <label ng-class="{'float': vm.inquiry.DateFrom}">Date From</label>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-3" ng-if="vm.inquiry.searchBy == 2">
+            <div class="floating-label ">
+                <input type="text" class="form-control" ng-model="vm.inquiry.DateTo" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.inquiry.DateTo}">
+                <label ng-class="{'float': vm.inquiry.DateTo}">Date To</label>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-2">
+            <button class="btn btn-info inline-button" type="submit">
+                <i class="fa fa-search fa-fw"></i>
+                <span>Search</span>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 bottom-margin">
+            <div style="height: 300px;" ui-grid="vm.inquiryGrid" ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+    </div>
+</div>

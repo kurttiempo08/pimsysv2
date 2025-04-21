@@ -1,0 +1,81 @@
+<div class="animated fadeIn" ng-controller="OtherIncCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3>Hog List</h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 400px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.search" ng-change="vm.searching()">
+									<label ng-class="{'float':vm.search}">Search Hog code</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.hog_code">
+									<label ng-class="{'float':vm.variables.hog_code}">Hog Code</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.hog_weight">
+									<label ng-class="{'float':vm.variables.hog_weight}">Hog weight</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+                            <div class="col-md-12">
+                                <div class="floating-label">
+                                    <select class="form-control" ng-model="vm.variables.hog_gender">
+                                        <option></option>
+                                        <option value="MALE">MALE</option>
+                                        <option value="FEMALE">FEMALE</option>
+                                    </select>
+                                    <label ng-class="{'float':vm.variables.hog_gender}">Gender</label>
+                                </div>
+                            </div>
+                        </div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.hog_desc">
+									<label ng-class="{'float':vm.variables.hog_desc}">Hog Description</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button class="btn btn-md btn-success" ng-click="vm.save()">
+								<b>Save</b>
+							</button>
+							<button class="btn btn-md btn-primary" ng-click="vm.clearFunction()">
+								<b>New</b>
+							</button>
+							<button class="btn btn-md btn-danger" ng-click="vm.delete()">
+								<b>Delete</b>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

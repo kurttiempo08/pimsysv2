@@ -1,0 +1,79 @@
+<div class="animated fadeIn" ng-controller="AutoDebitCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3>Auto debit chart of account</h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="floating-label ">
+							<input type="text" class="form-control" ng-model="vm.search" ng-change="vm.searching()">
+							<label ng-class="{'float':vm.search}">Search auto debit by chart code</label>
+						</div>
+					</div>
+					<div class="col-md-12 bottom-margin">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 400px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label ">
+							<div class="group-input">
+								<input type="text" class="form-control" ng-model="vm.variables.OI_name" disabled>
+								<label ng-class="{'float':vm.variables.OI_name}">Other Income</label>
+								<div class="button-group-append">
+									<button type="button" class="btn" ng-click="vm.openModal(1)">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label ">
+							<input type="text" class="form-control" ng-model="vm.variables.OI_type" disabled>
+							<label ng-class="{'float':vm.variables.OI_type}">Other Income Type</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label ">
+							<div class="group-input">
+								<input type="text" class="form-control" ng-model="vm.variables.ChAcctName">
+								<label ng-class="{'float':vm.variables.ChAcctName}">Chart Acct name</label>
+								<div class="button-group-append">
+									<button type="button" class="btn" ng-click="vm.openModal(2)">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label ">
+							<input type="text" class="form-control" ng-model="vm.variables.ChAcctGroupCodeName">
+							<label ng-class="{'float':vm.variables.ChAcctGroupCodeName}">Chart Acct Subgroup</label>
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button class="btn btn-default" ng-click="vm.clearFunction()">
+								<i class="fa fa-times fa-fw"></i>Clear
+							</button>
+							<button class="btn btn-primary" ng-click="vm.save()">
+								<i class="fa fa-save fa-fw"></i>Save
+							</button>
+							<button class="btn btn-danger" ng-click="vm.delete()">
+								<i class="fa fa-trash fa-fw"></i>Delete
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

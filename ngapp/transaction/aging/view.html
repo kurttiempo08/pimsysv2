@@ -1,0 +1,68 @@
+<div class="animated fadeIn" ng-controller="AgingCtrl as vm">
+    <div class="progress-card">
+        <div class="progress-card-header">
+            <h3>Aging</h3>
+            <ul>
+                <li ng-class="{active: vm.menu === 'monthly'}">
+                    <a ng-click="vm.changeBox(1)">Monthly Aging</a>
+                </li>
+                <li ng-class="{active: vm.menu === 'annual'}">
+                    <a ng-click="vm.changeBox(2)">Annual Aging</a>
+                </li>
+            </ul>
+        </div>
+        <div class="progress-card-body">
+            <form ng-submit="vm.openModal()">
+                <div class="animated fadeIn">
+                    <div class="col-md-2">
+                        <div class="floating-label">
+                            <div class="group-input">
+                                <input type="text" class="form-control" ng-model="vm.MHOLID" disabled>
+                                <label ng-class="{'float':vm.MHOLID}">MHOLID</label>
+                                <div class="button-group-append">
+                                    <button type="button" class="btn" ng-click="vm.openModal()">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="floating-label">
+                            <input type="text" class="form-control" ng-model="vm.name" disabled>
+                            <label ng-class="{'float':vm.name}">Homeowner</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="floating-label">
+                            <input type="text" class="form-control" ng-model="vm.address" disabled>
+                            <label ng-class="{'float':vm.address}">Blk-Lot/Cluster</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 parallel-button">
+                        <button class="btn btn-md btn-success" type="button" ng-click="vm.runAging()">Run
+                            Aging</button>
+                        <button class="btn btn-md btn-warning" type="button" ng-click="vm.generateAging()">Generate
+                            Aging Report</button>
+                    </div>
+                </div>
+            </form>
+            <form ng-if="vm.menu === 'monthly'">
+                <div class="animated fadeIn">
+                    <div class="col-md-12">
+                        <div class="modal-grid-with-buttons bottom-margin" style="height:600px;"
+                            ui-grid="vm.defaultGrid1" ui-grid-selection ui-grid-resize-columns></div>
+                    </div>
+                </div>
+            </form>
+            <form ng-if="vm.menu === 'annual'">
+                <div class="animated fadeIn">
+                    <div class="col-md-12">
+                        <div class="modal-grid-with-buttons bottom-margin" style="height:600px;"
+                            ui-grid="vm.defaultGrid2" ui-grid-selection ui-grid-resize-columns></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

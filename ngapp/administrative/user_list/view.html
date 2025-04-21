@@ -1,0 +1,118 @@
+<div class="animated fadeIn" ng-controller="UserListCtrl as vm">
+    <div class="row">
+        <div class="progress-card col-md-6">
+            <div class="progress-card-header">
+                <h3>User Form</h3>
+            </div>
+            <form ng-submit="vm.save()">
+                <div class="progress-card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="floating-label">
+                                <div class="group-input">
+                                    <input type="text" class="form-control" ng-model="vm.variables.LoginID" ng-class="{'glow': vm.variables.LoginID}" disabled>
+                                    <div class="button-group-append">
+                                        <button type="button" class="btn" ng-click="vm.openModal()">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <label ng-class="{'float': vm.variables.LoginID}">User ID</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.FirstName" ng-class="{'glow': vm.variables.FirstName}" required>
+                                <label ng-class="{'float': vm.variables.FirstName}">Firstname</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.MiddleName" ng-class="{'glow': vm.variables.MiddleName}">
+                                <label ng-class="{'float': vm.variables.MiddleName}">Middlename</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.LastName" ng-class="{'glow': vm.variables.LastName}" required>
+                                <label ng-class="{'float': vm.variables.LastName}">Lastname</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.DateOfBirth" datepicker="" dp-format="mm/dd/yyyy" ng-class="{'glow': vm.variables.DateOfBirth}">
+                                <label ng-class="{'float': vm.variables.DateOfBirth}">Date of Birth</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label">
+                                <select class="form-control" ng-model="vm.variables.UserLevel" ng-class="{'glow': vm.variables.UserLevel}" required>
+                                    <option></option>
+                                    <option>ADMIN</option>
+                                    <option>MEMBER</option>
+                                    <option>SCHEMA ADMIN</option>
+                                    <option>VIEWER</option>
+                                    <option>SUPPLY</option>
+                                    <option>RO-SUPPLY</option>
+                                    <option>AA</option>
+                                </select>
+                                <label ng-class="{'float':vm.variables.UserLevel}">User Level</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label">
+                                <div class="group-input">
+                                    <input type="text" class="form-control" ng-model="vm.variables.center_name" ng-class="{'glow': vm.variables.center_name}" disabled>
+                                    <div class="button-group-append">
+                                        <button type="button" class="btn btn-info btn-sm" ng-click="vm.openDivision()">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <label ng-class="{'float': vm.variables.center_name}">Center/program</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="floating-label" ng-class="{'glow': vm.variables.Description}">
+                                <textarea rows="5" class="form-control" ng-model="vm.variables.Description" style="resize: none;"></textarea>
+                                <label ng-class="{'float':vm.variables.Description}">Description</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa fa-save fa-fw"></i>Save
+                                </button>
+                                <button type="button" class="btn btn-danger" ng-click="vm.delete()">
+                                    <i class="fa fa-trash fa-fw"></i>Delete
+                                </button>
+                                <button type="button" class="btn btn-primary" ng-click="vm.clearFunction()">
+                                    <i class="fa fa-save fa-fw"></i>Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="progress-card col-md-6">
+            <div class="progress-card-header">
+                <h3>User Access Rights</h3>
+            </div>
+            <div class="progress-card-body">
+                <div style="height: 500px;" ui-grid="vm.accessRightsGrid" ui-grid-selection ui-grid-resize-columns></div>
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button type="button" class="btn btn-success" ng-click="vm.saveAccessRights()">
+                                <i class="fa fa-save fa-fw"></i>Save Access Rights
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

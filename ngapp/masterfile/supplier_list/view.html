@@ -1,0 +1,103 @@
+<div class="animated fadeIn" ng-controller="SupplierCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3><b>SUPPLIER LIST</b></h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 400px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.search" ng-change="vm.searching()">
+									<label ng-class="{'float':vm.search}">Search Supplier</label>
+								</div>
+                            </div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.supplier_name">
+									<label ng-class="{'float':vm.variables.supplier_name}">Supplier Name</label>
+								</div>
+							</div>
+                        </div>
+                        <div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.supplier_address">
+									<label ng-class="{'float':vm.variables.supplier_address}">Supplier Address</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.supplier_tin">
+									<label ng-class="{'float':vm.variables.supplier_tin}">Supplier TIN</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.proprietor_fname">
+									<label ng-class="{'float':vm.variables.proprietor_fname}">Proprietor Firstname</label>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.proprietor_lname">
+									<label ng-class="{'float':vm.variables.proprietor_lname}">Proprietor Lastname</label>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.proprietor_mname">
+									<label ng-class="{'float':vm.variables.proprietor_mname}">Proprietor Middlename</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.mobile">
+									<label ng-class="{'float':vm.variables.mobile}">Mobile</label>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.email">
+									<label ng-class="{'float':vm.variables.email}">Email</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button class="btn btn-md btn-success" ng-click="vm.save()">
+								<b>Save</b>
+							</button>
+							<button class="btn btn-md btn-primary" ng-click="vm.clearFunction()">
+								<b>New/Clear</b>
+							</button>
+							<button class="btn btn-md btn-danger" ng-click="vm.delete()">
+								<b>Delete</b>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

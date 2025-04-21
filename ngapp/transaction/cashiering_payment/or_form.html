@@ -1,0 +1,136 @@
+<div class="printing-options">
+    <ul>
+        <li>
+            <button class="btn" ng-click="modal.close()">
+                <i class="fa fa-times fa-fw"></i>Close</button>
+        </li>
+        <li>
+            <button class="btn" ng-click="modal.print()">
+                <i class="fa fa-print fa-fw"></i>Print</button>
+        </li>
+    </ul>
+</div>
+<div id="print-ack" class="printing-page">
+    <div class="or-report">
+        <!-- <div class="header">
+            <strong class="more lh22p">PUEBLO GOLF ESTATES HOMEOWNERS ASSOCIATION, INC</strong>
+            <span class="f13p">Pueblo Golf and Country Club House Golf Estates Canitoan, Cagayan de Oro City</span>
+            <div class="f13p flex justify-center">Tel No. +63 (88) 880-6858
+                <div class="dot"></div>VAT-EXEMPT TIN: 488-930-958-000</div>
+            <div class="flex justify-end p50p">
+                <strong class="more f14p">No.</strong>
+                <span class="text-danger or-no">{{modal.variables.ORNo}}</span>
+            </div>
+        </div>
+        <div class="title">
+            <strong class="border-bottom-2">OFFICIAL RECEIPT</strong>
+        </div> -->
+        <div class="form">
+            <div class="margin-top-95p flex bottom-margin">
+                <div class="w-500p"></div>
+                <div class="flex">
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="w-143p text-center">{{modal.variables.TDate | date: 'longDate'}}</div>
+                </div>
+            </div>
+            <div class="bottom-margin">
+                <div class="flex">
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="w-590p pl10p">{{modal.variables.FullName}}</div>
+                </div>
+            </div>
+            <div class="bottom-margin">
+                <div class="flex">
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="w-630p">{{modal.variables.Address}}</div>
+                </div>
+
+            </div>
+            <div class="bottom-margin">
+                <div class="flex">
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="w-350p"></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="w-193p"></div>
+                </div>
+            </div>
+            <div>
+                <div class="flex">
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="w-573p pl10p">{{modal.variables.AmountInWords}}</div>
+                </div>
+            </div>
+            <div class="bottom-margin">
+                <div class="flex">
+                    <div class="w-500p">&nbsp;</div>
+                    <div>&nbsp;&nbsp;&nbsp;</div>
+                    <div class="w-167p">&nbsp;{{modal.TotalAmount | number: 2}}</div>
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+            <div class="bottom-margin">
+                <div class="flex">
+                    <div class="w-687p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{modal.Details}}</div>
+                </div>
+            </div>
+            <div class="bottom-margin">
+                <div class="w-687p">&nbsp;</div>
+            </div>
+            <div class="row bottom-margin margin-top-20p">
+                <div class="col-md-7">
+                    <table>
+                        <tr>
+                            <td class="w-300p"></td>
+                            <td class="w-150p text-right lh15p">{{modal.cash.total | number: 2}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="text-right lh17p">{{modal.totalCheck}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="text-right lh17p">{{modal.TotalAmount | number: 2}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-5" ng-if="modal.checkDetails.length > 0">
+                    <div class="lh15p">Check Details :&nbsp;</div>
+                    <div class="flex-column">
+                        <div ng-repeat="x in modal.checkDetails">{{x.CardNo}}/{{x.Date}}/{{x.Bank}}</div>
+                        <div class="border-top f10p">Check No/ Check Date/ Bank</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="flex reverse" ng-if="modal.variables.SpecialTransaction === 'Y'">
+                        <table>
+                            <tr>
+                                <td class="pdlr2 lh15p">12 Mos. Monthly Due</td>
+                                <td class="text-right lh15p pdlr2">{{modal.twelve | number: 2}}</td>
+                            </tr>
+                            <tr>
+                                <td class="pdlr2 lh17p">1 Month Discount</td>
+                                <td class="text-right lh17p pdlr2">{{modal.one | number: 2}}</td>
+                            </tr>
+                            <tr>
+                                <td class="pdlr2 lh17p">Total</td>
+                                <td class="text-right lh17p pdlr2">{{modal.TotalAmount | number: 2}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="flex-column justify-center mb-60p">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="flex">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="w-200p text-center">{{modal.userName}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

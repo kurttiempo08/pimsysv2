@@ -1,0 +1,180 @@
+<div class="modal-content">
+    <div class="modal-title-div">
+        <strong class="modal-title-name">Add Delivery</strong>
+        <button class="modal-exit" ng-click="modal.close()">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="height: 300px;" ui-grid="modal.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.center" ng-class="{'glow': modal.center}" disabled>
+                        <label ng-class="{'float':modal.center}" >PO by</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.stock_no" ng-class="{'glow':modal.stock_no}" disabled>
+                        <label ng-class="{'float':modal.stock_no}" >Stock no</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.item_name" ng-class="{'glow':modal.item_name}" disabled>
+                        <label ng-class="{'float':modal.item_name}" >Item Name</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.description" ng-class="{'glow': modal.description}" disabled>
+                        <label ng-class="{'float':modal.description}" >Item Description</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.po_num" ng-class="{'glow': modal.variables.po_num}" disabled>
+                        <label ng-class="{'float':modal.variables.po_num}" >PO number</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.property_no" ng-class="{'glow': modal.variables.property_no}" disabled>
+                        <label ng-class="{'float':modal.variables.property_no}" >Property no.</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.unit" ng-class="{'glow': modal.variables.unit}" disabled>
+                        <label ng-class="{'float':modal.variables.unit}" >Unit</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.fund_name" ng-class="{'glow': modal.variables.fund_name}" disabled>
+                        <label ng-class="{'float':modal.variables.fund_name}" >Fund Cluster</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <select class="form-control" ng-change="modal.filter()" ng-model="modal.variables.delivery" id="delivery">
+                            <option ng-show="modal.show1st" value="1st">1st</option>
+                            <option ng-show="modal.show2nd" value="2nd">2nd</option>
+                            <option ng-show="modal.show3rd" value="3rd">3rd</option>
+                            <option ng-show="modal.show4th" value="4th">4th</option>
+                            <option ng-show="modal.show5th" value="5th">5th</option>
+                            <option ng-show="modal.show6th" value="6th">6th</option>
+                            <option ng-show="modal.show7th" value="7th">7th</option>
+                            <option ng-show="modal.show8th" value="8th">8th</option>
+                            <option ng-show="modal.show9th" value="9th">9th</option>
+                            <option ng-show="modal.show10th" value="10th">10th</option>
+                            <option ng-show="modal.show11th" value="11th">11th</option>
+                            <option ng-show="modal.show12th" value="12th">12th</option>
+                            <option value="adjustment">adjustment</option>
+                        </select>
+                        <label ng-class="{'float':modal.variables.delivery}" for="delivery">Delivery</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align:right;" ng-disabled="modal.disabled" ng-change="modal.compute()" type="text" class="form-control" ng-model="modal.variables.qty_rec" ng-class="{'glow': modal.variablesdtl.qty_rec}">
+                        <label ng-class="{'float':modal.variables.qty_rec}" >Qty</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!-- <div class="floating-label">
+                        <input style="text-align:right;color:red;" ng-disabled="modal.lock" ng-change="modal.compute()"  type="text" class="form-control" ng-model="modal.variables.unit_rec" ng-class="{'glow': modal.variables.unit_rec}">
+                        <label ng-class="{'float':modal.variables.unit_rec}" >Unit Cost</label>
+                    </div> -->
+                    <div class="floating-label">
+                        <input style="text-align:right;color:red;" disabled ng-change="modal.compute()"  type="text" class="form-control" ng-model="modal.variables.unit_rec" ng-class="{'glow': modal.variables.unit_rec}">
+                        <label ng-class="{'float':modal.variables.unit_rec}" >Unit Cost</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align:right;color:red;" ng-change="modal.compute()" type="text" class="form-control" ng-model="modal.totaldel" ng-class="{'glow': modal.totaldel}" disabled>
+                        <label ng-class="{'float':modal.totaldel}" >Total delivery cost</label>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align:right;" type="text" class="form-control" ng-model="modal.variables.ris" ng-class="{'glow': modal.variables.ris}">
+                        <label ng-class="{'float':modal.variables.ris}" >RIS</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align:right;" type="text" class="form-control" ng-model="modal.variables.jev" ng-class="{'glow': modal.variables.jev}">
+                        <label ng-class="{'float':modal.variables.jev}" >JEV</label>
+                    </div>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.trans_date" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': modal.variables.trans_date}">
+                        <label ng-class="{'float': modal.variables.trans_date}">Delivery Date</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align: right;color:red;" ng-change="modal.compute()" type="text" class="form-control" ng-model="modal.inventorytotalcost" ng-class="{'glow': modal.inventorytotalcost}" disabled>
+                        <label ng-class="{'float': modal.inventorytotalcost}">Inventory Total Cost conso</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align: right;color:red;" ng-change="modal.compute()" type="text" class="form-control" ng-model="modal.inventorycount" ng-class="{'glow': modal.inventorycount}" disabled>
+                        <label ng-class="{'float': modal.inventorycount}">Qty inventory count conso</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align:right;color:red;" type="text" class="form-control" ng-model="modal.value" ng-class="{'glow': modal.value}" disabled>
+                        <label ng-class="{'float':modal.value}" >Weighted cost conso</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align: right;color:red;" ng-change="modal.compute()" type="text" class="form-control" ng-model="modal.inventorytotalcostindiv" ng-class="{'glow': modal.inventorytotalcostindiv}" disabled>
+                        <label ng-class="{'float': modal.inventorytotalcostindiv}">Inventory Total Cost indiv</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align: right;color:red;" ng-change="modal.compute()" type="text" class="form-control" ng-model="modal.inventorycountindiv" ng-class="{'glow': modal.inventorycountindiv}" disabled>
+                        <label ng-class="{'float': modal.inventorycountindiv}">Qty inventory count indiv</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align:right;color:red;" type="text" class="form-control" ng-model="modal.valueindiv" ng-class="{'glow': modal.valueindiv}" disabled>
+                        <label ng-class="{'float':modal.valueindiv}" >Weighted cost indiv</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button type="button" class="btn btn-md btn-success" ng-click="modal.save()"><strong>SAVE</strong></button>
+                    <button type="button" class="btn btn-md btn-primary" ng-click="modal.clearFunction()"><strong>CLEAR</strong></button>
+                    <button type="button" class="btn btn-md btn-danger" ng-click="modal.delete()"><strong>DELETE</strong></button>
+                    <button type="button" class="btn btn-md btn-danger" ng-click="modal.close()"><strong>CLOSE</strong></button>
+                </div>    
+            </div>
+    </div>

@@ -1,0 +1,63 @@
+<div class="footer-modal-box" ng-class="{'minimize': vm.minimizeOI}">
+    <div class="progress-card green">
+        <div class="progress-card-header" ng-click="vm.minimizeModals('OI')">
+            <div class="header-button-group">
+                <h4>Other Income</h4>
+                <div class="btn-group">
+                    <button type="button" class="btn-clear" ng-click="vm.showModals('OI', false)">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="progress-card-body" ng-class="{'minimize': vm.minimizeOI}">
+            <form ng-submit="vm.append(4)">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="floating-label">
+                            <!-- <div class="group-input"> -->
+                            <input type="text" class="form-control" ng-model="vm.income.AcctGroupCode" ng-class="{'glow': vm.income.AcctGroupCode}" disabled>
+                            <!-- <div class="button-group-append">
+                                    <button type="button" class="btn" ng-click="vm.searchOI()">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div> -->
+                            <!-- </div> -->
+                            <label ng-class="{'float': vm.income.AcctGroupCode}">Code</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="floating-label">
+                            <select class="form-control" ng-model="vm.income.Particulars" ng-class="{'glow': vm.income.Particulars}" required ng-change="vm.changeCOA(vm.income.Particulars, 'OI')">
+                                <option></option>
+                                <option ng-repeat="x in vm.COAOIList">{{x.ChAcctGroupCodeName}}</option>
+                            </select>
+                            <label ng-class="{'float': vm.income.Particulars}">Particulars</label>
+                        </div>
+                        <!-- <div class="floating-label">
+                            <input type="text" class="form-control" ng-model="vm.income.Particulars" ng-class="{'glow': vm.income.Particulars}" focus-me="vm.showOI">
+                            <label ng-class="{'float': vm.income.Particulars}">Particulars</label>
+                        </div> -->
+                    </div>
+                    <div class="col-md-12">
+                        <div class="floating-label">
+                            <input type="text" class="form-control text-right" ng-model="vm.income.AmountDue" ng-class="{'glow': vm.income.AmountDue}"
+                                only-numbers-wo-negative>
+                            <label ng-class="{'float': vm.income.AmountDue}">Amount</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="floating-label">
+                            <textarea rows="3" class="form-control" ng-model="vm.income.Remarks" style="resize: none;" ng-class="{'glow': vm.income.Remarks}"></textarea>
+                            <label ng-class="{'float':vm.income.Remarks}">Explaination</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-lg btn-green full-width" type="submit">
+                            <i class="fa fa-plus fa-fw"></i>Append</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

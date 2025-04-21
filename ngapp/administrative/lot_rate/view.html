@@ -1,0 +1,30 @@
+<div class="animated fadeIn" ng-controller="LotRateCtrl as vm">
+    <div class="progress-card">
+        <div class="progress-card-header">
+            <h3>Set Lot/House and Lot Rate</h3>
+        </div>
+    </div>
+    <div class="progress-card-body">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="floating-label">
+                    <select class="form-control" ng-change="vm.showGenerated()" ng-model="vm.Type" ng-class="{'glow': vm.Type}" required>
+                        <option></option>
+                        <option>HOUSE and LOT</option>
+                        <option>LOT</option>
+                    </select>
+                    <label ng-class="{'float':vm.Type}">Type</label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="floating-label">
+                    <input type="text" class="form-control bold text-right" ng-model="vm.Rate">
+                    <label ng-class="{'float':vm.Rate}">Rate</label>
+                </div>
+            </div>
+            <div class="col-md-8 parallel-button">
+                <button class="btn btn-md btn-success" type="button" ng-click="vm.runAnnual()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

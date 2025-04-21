@@ -1,0 +1,56 @@
+<div class="animated fadeIn modal-content">
+    <div class="modal-title-div">
+        <strong class="modal-title-name">INDIVUAL SOA PRINTING</strong>
+        <button class="modal-exit" ng-click="modal.close()">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+    <div style="padding:2 0px;">
+        <div class="row">
+            <form>
+                <div class="animated fadeIn">
+                    <div class="col-md-3">
+                        <div class="floating-label">
+                            <input type="Month" class="form-control bold" ng-model="modal.datePicked">
+                            <label ng-class="{'float':modal.datePicked}">Enter Month</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="floating-label">
+                            <div class="group-input">
+                                <input type="text" class="form-control" ng-model="modal.MHOLID" disabled>
+                                <label ng-class="{'float':modal.MHOLID}">MHOLID</label>
+                                <div class="button-group-append">
+                                    <button type="button" class="btn" ng-click="modal.openModal()">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="floating-label">
+                            <input type="text" class="form-control" ng-model="modal.name" disabled>
+                            <label ng-class="{'float':modal.name}">Homeowner</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3 parallel-button text-right">
+                        <button class="btn btn-md btn-primary" type="button" ng-click="modal.showReceivable()">Show Receivable</button>
+                        <button class="btn btn-md btn-warning" type="button" ng-click="modal.generatePrint(1)">Print SOA</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal-grid-with-buttons bottom-margin" style="height:500px;" ui-grid="modal.defaultGrid" ui-grid-selection ui-grid-resize-columns></div>
+            </div>
+            <div class="col-md-3 col-md-offset-9">
+                <div class="floating-label">
+                    <input type="text" class="form-control bold text-right" ng-model="modal.total" disabled>
+                    <label ng-class="{'float':modal.total}">Total Receivable</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

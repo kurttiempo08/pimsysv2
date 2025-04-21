@@ -1,0 +1,132 @@
+<div class="animated fadeIn" ng-controller="PersonnelCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3>Personnel List</h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 650px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="offset-8 col-md-4">
+								<img
+									id="img"
+									ng-src="{{ vm.variables.recp_profpic }}"
+									style="width:80%; height: 150px; border:1px solid white;border-radius: 100%;margin-left:10%;"
+									alt="Loading..."
+								/>
+								<form id="myForm">
+									<input
+										style="font-size:80%"
+										id="file"
+										type="file"
+										accept="image/*"
+										class="btn btn-md btn-primary"
+										file-model="vm.image"
+										custom-on-change="vm.Preview"
+									/>
+								</form>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.search" ng-change="vm.searching()">
+									<label ng-class="{'float':vm.search}">Search Recepient Lastname</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.recp_fname">
+									<label ng-class="{'float':vm.variables.recp_fname}">Firstname</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.recp_lname">
+									<label ng-class="{'float':vm.variables.recp_lname}">Lastname</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.recp_mname">
+									<label ng-class="{'float':vm.variables.recp_mname}">Middlename</label>
+								</div>
+							</div>
+                        </div>
+                        <div class="row">
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.recp_suffixname">
+									<label ng-class="{'float':vm.variables.recp_suffixname}">Suffix</label>
+								</div>
+							</div>
+							<div class="col-md-6">
+                                <div class="floating-label">
+                                    <select class="form-control" ng-model="vm.variables.recp_gender">
+                                        <option></option>
+                                        <option value="MALE">MALE</option>
+                                        <option value="FEMALE">FEMALE</option>
+                                    </select>
+                                    <label ng-class="{'float':vm.variables.recp_gender}">Gender</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.recp_address">
+									<label ng-class="{'float':vm.variables.recp_address}">Address</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.recp_barangay">
+									<label ng-class="{'float':vm.variables.recp_barangay}">Barangay</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.recp_contact">
+									<label ng-class="{'float':vm.variables.recp_contact}">Contact #</label>
+								</div>
+							</div>
+                        </div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button class="btn btn-md btn-success" ng-click="vm.save()">
+								<b>Save</b>
+							</button>
+							<button class="btn btn-md btn-primary" ng-click="vm.clearFunction()">
+								<b>New</b>
+							</button>
+							<button class="btn btn-md btn-danger" ng-click="vm.delete()">
+								<b>Delete</b>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

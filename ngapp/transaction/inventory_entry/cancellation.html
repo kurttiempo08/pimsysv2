@@ -1,0 +1,37 @@
+<div class="modal-content">
+    <div class="modal-title-div">
+        <strong class="modal-title-name">Cancellation Form</strong>
+        <button class="modal-exit" ng-click="modal.close()">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+                <div class="col-md-12">
+                    <h3 style="color: red;"><strong>NOTE: THIS ACTION IS CRUCIAL. ALL TRANSACTIONS LINKED TO THIS PO WILL NOT BE INCLUDED IN THE COMPUTATION.</strong></h3>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="floating-label">
+                    <textarea type="text" class="form-control" ng-model="modal.variables.cancellation_reason" rows="4"></textarea>
+                    <label ng-class="{'float':modal.variables.cancellation_reason}" >Reason of Cancellation</label>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-md-6">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.canceled_by" disabled>
+                    <label ng-class="{'float':modal.variables.canceled_by}" >Canceled by</label>
+                </div>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button ng-click="modal.save()" type="button" class="btn btn-danger btn-md"><strong>PROCEED CANCELLATION</strong></button>
+                <button type="button" ng-click="modal.close()" class="btn btn-warning btn-md"><strong>CLOSE</strong></button>
+            </div>
+        </div>
+    </div>
+</div>

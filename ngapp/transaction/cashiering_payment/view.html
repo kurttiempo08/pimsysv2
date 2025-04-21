@@ -1,0 +1,214 @@
+<div class="animated fadeIn" ng-controller="CashierPaymentCtrl as vm">
+    <div class="progress-card">
+        <div class="progress-card-header">
+            <h3>Cashiering Payment</h3>
+            <ul>
+                <li ng-class="{active: vm.menu === 'Header'}">
+                    <a ng-click="vm.changeBox('Header', 1)">Header</a>
+                </li>
+                <!-- <li ng-class="{active: vm.menu === 'Monthly Dues'}" ng-if="vm.variables.Type === 'Official Receipt'">
+                    <a ng-click="vm.changeBox('Monthly Dues', 2)">Monthly Dues</a>
+                </li>
+                <li ng-class="{active: vm.menu === 'Membership Fee'}" ng-if="vm.variables.Type === 'Official Receipt'">
+                    <a ng-click="vm.changeBox('Membership Fee', 2)">Membership Fee</a>
+                </li> -->
+                <li ng-class="{active: vm.menu === 'Payment'}">
+                    <a ng-click="vm.changeBox('Payment', 3)">Payment</a>
+                </li>
+                <li ng-class="{active: vm.menu === 'Inquiry'}">
+                    <a ng-click="vm.changeBox('Inquiry', 1)">Inquiry</a>
+                </li>
+            </ul>
+        </div>
+        <div class="progress-card-body">
+            <form ng-submit="vm.saveHeader()" ng-if="vm.menu === 'Header'">
+                <div class="animated fadeIn">
+                    <div class="row bottom-margin">
+                        <div class="col-md-4">
+                            <h4 ng-click="vm.searchHeader()">Transaction No: {{vm.variables.THDRID}}</h4>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Total Amount Due: Php {{vm.variables.TotalAmountPayable | number: 2}}</h4>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Total Payment: Php {{vm.variables.TotalAmountActualPaid | number: 2}}</h4>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="floating-label">
+                                <select class="form-control" ng-model="vm.variables.Type" ng-class="{'glow': vm.variables.Type}" required ng-change="vm.changeType()"
+                                    ng-disabled="vm.variables.Status === 'TENDERED'">
+                                    <option></option>
+                                    <option>Official Receipt</option>
+                                    <option>Acknowledgement Receipt</option>
+                                </select>
+                                <label ng-class="{'float':vm.variables.Type}">Type</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.TDate" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.TDate}"
+                                    disabled>
+                                <label ng-class="{'float': vm.variables.TDate}">Transaction Date</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3" ng-if="vm.variables.Type === 'Official Receipt'">
+                            <div class="floating-label ">
+                                <div class="group-input">
+                                    <input type="text" class="form-control" ng-model="vm.variables.ORNo" ng-class="{'glow': vm.variables.ORNo}" required disabled>
+                                    <div class="button-group-append">
+                                        <button type="button" class="btn" ng-click="vm.getORSetup(true)" ng-disabled="vm.variables.Status === 'TENDERED'">
+                                            <i class="fa fa-refresh"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <label ng-class="{'float': vm.variables.ORNo}">O.R No</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3" ng-if="vm.variables.Type === 'Acknowledgement Receipt'">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.AcknowledgementFormNo" ng-class="{'glow': vm.variables.AcknowledgementFormNo}"
+                                    disabled>
+                                <label ng-class="{'float': vm.variables.AcknowledgementFormNo}">Acknowledgement Form No</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="floating-label">
+                                <select class="form-control" ng-change="vm.changeMember()" ng-model="vm.variables.IsMember" ng-class="{'glow': vm.variables.IsMember}"
+                                    required ng-disabled="vm.variables.Status === 'TENDERED'">
+                                    <option></option>
+                                    <option>YES</option>
+                                    <option>NO</option>
+                                </select>
+                                <label ng-class="{'float':vm.variables.IsMember}">Member?</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="floating-label">
+                                <div class="group-input">
+                                    <input type="text" class="form-control" ng-model="vm.variables.MemberID_link" ng-class="{'glow': vm.variables.MemberID_link}"
+                                        disabled>
+                                    <div class="button-group-append">
+                                        <button type="button" class="btn" ng-click="vm.searchMember()" ng-disabled="vm.variables.IsMember !== 'YES' || vm.variables.Status === 'TENDERED'">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <label ng-class="{'float': vm.variables.MemberID_link}">Member</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.LN" ng-class="{'glow': vm.variables.LN}" ng-required="vm.variables.IsMember === 'NO'"
+                                    ng-disabled="vm.variables.IsMember === 'YES' || vm.variables.Status === 'TENDERED'" focus-me="vm.variables.IsMember === 'NO'">
+                                <label ng-class="{'float': vm.variables.LN}">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.FN" ng-required="vm.variables.IsMember === 'NO'" ng-class="{'glow': vm.variables.FN}"
+                                    ng-disabled="vm.variables.IsMember === 'YES' || vm.variables.Status === 'TENDERED'">
+                                <label ng-class="{'float': vm.variables.FN}">First Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.MN" ng-class="{'glow': vm.variables.MN}" ng-required="vm.variables.IsMember === 'NO'"
+                                    ng-disabled="vm.variables.IsMember === 'YES' || vm.variables.Status === 'TENDERED'">
+                                <label ng-class="{'float': vm.variables.MN}">Middle Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.EXN" ng-class="{'glow': vm.variables.EXN}" ng-required="vm.variables.IsMember === 'NO'"
+                                    ng-disabled="vm.variables.IsMember === 'YES' || vm.variables.Status === 'TENDERED'">
+                                <label ng-class="{'float': vm.variables.EXN}">Ext</label>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.Address" ng-class="{'glow': vm.variables.Address}" ng-required="vm.variables.IsMember === 'NO'"
+                                    ng-disabled="vm.variables.IsMember === 'YES' || vm.variables.Status === 'TENDERED'">
+                                <label ng-class="{'float': vm.variables.Address}">Address</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="floating-label">
+                                <input type="text" class="form-control" ng-model="vm.variables.Status" ng-class="{'glow': vm.variables.Status}" disabled>
+                                <label ng-class="{'float': vm.variables.Status}">Status</label>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="floating-label">
+                                <input type="text" class="form-control" ng-model="vm.variables.Remarks" ng-class="{'glow': vm.variables.Remarks}" ng-disabled="vm.variables.Status === 'TENDERED'">
+                                <label ng-class="{'float': vm.variables.Remarks}">Remarks</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row bottom-margin" ng-if="vm.variables.THDRID">
+                        <div class="col-md-9">
+                            <div style="height: 250px;" ui-grid="vm.transGrid" ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize></div>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-skyblue full-width btn-lg bottom-margin btn-effect" type="button" ng-click="vm.showModals('OI',true)"
+                                ng-if="vm.variables.Type === 'Official Receipt'" ng-disabled="vm.specialTrans">
+                                <i class="fa fa-sign-in"></i>&nbsp;Other Income</button>
+                            <button class="btn btn-skyblue full-width btn-lg bottom-margin btn-effect" type="button" ng-click="vm.showModals('CB',true)"
+                                ng-if="vm.variables.Type !== 'Official Receipt'" ng-disabled="vm.specialTrans">
+                                <i class="fa fa-building-o"></i>&nbsp;Deposit/Bond</button>
+                            <button class="btn btn-skyblue full-width btn-lg bottom-margin btn-effect" type="button" ng-click="vm.showModals('MD',true)"
+                                ng-if="vm.variables.Type === 'Official Receipt'" ng-disabled="vm.specialTrans">
+                                <i class="fa fa-calendar"></i>&nbsp;Monthly Dues</button>
+                            <button class="btn btn-skyblue full-width btn-lg bottom-margin btn-effect" type="button" ng-click="vm.showModals('MF',true)"
+                                ng-if="vm.variables.Type === 'Official Receipt'" ng-disabled="vm.specialTrans">
+                                <i class="fa fa-users"></i>&nbsp;Membership Fee</button>
+                            <button class="btn btn-skyblue full-width btn-lg bottom-margin btn-effect" type="button" ng-click="vm.changeBox('Payment', 3)">
+                                <i class="fa fa-money"></i>&nbsp;Add Payment</button>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="flex" ng-if="vm.specialTrans">
+                                    <h4><i>You are in special transaction</i>&nbsp;<button type="button" class="btn-clear fa fa-times text-danger" title="Exit Special Transaction" ng-click="vm.exitSpecialTrans()"></button></h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-save"></i>&nbsp;Save</button>
+                                <button class="btn btn-danger" type="button" ng-click="vm.cancelTrans()" ng-if="vm.variables.THDRID && vm.variables.Status !== 'TENDERED'">
+                                    <i class="fa fa-clipboard"></i>&nbsp;Cancel Transaction</button>
+                                <button class="btn btn-info" type="button" ng-click="vm.printReport()" ng-if="vm.variables.Status === 'TENDERED'">
+                                    <i class="fa fa-clipboard"></i>&nbsp;Print {{ vm.variables.Type }}</button>
+                                <button class="btn btn-dark" type="button" ng-click="vm.clearHeader()">
+                                    <i class="fa fa-times"></i>&nbsp;Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- <div ng-if="vm.menu === 'Monthly Dues'">
+                <div ng-include="'ngapp/transaction/cashiering_payment/monthly_dues.html'" include-replace></div>
+            </div>
+            <div ng-if="vm.menu === 'Membership Fee'">
+                <div ng-include="'ngapp/transaction/cashiering_payment/membership_fee.html'" include-replace></div>
+            </div> -->
+            <!-- <form ng-if="vm.menu === 'Other Income'">
+                <div ng-include="'ngapp/transaction/cashiering_payment/other_income.html'" include-replace></div>
+            </form> -->
+            <form ng-if="vm.menu === 'Payment'" ng-submit="vm.savePayment()">
+                <div ng-include="'ngapp/transaction/cashiering_payment/payment.html'" include-replace></div>
+            </form>
+            <form ng-if="vm.menu === 'Inquiry'" ng-submit="vm.inquiryGet()">
+                <div ng-include="'ngapp/transaction/cashiering_payment/inquiry.html'" include-replace></div>
+            </form>
+        </div>
+    </div>
+    <div class="footer-modal" ng-class="{ 'open' : vm.showCB || vm.showOI || vm.showMD || vm.showMF }">
+        <div class="footer-modal-body row">
+            <div ng-if="vm.showMD" ng-include="'ngapp/transaction/cashiering_payment/monthly_dues.html'" include-replace></div>
+            <div ng-if="vm.showMF" ng-include="'ngapp/transaction/cashiering_payment/membership_fee.html'" include-replace></div>
+            <div ng-if="vm.showCB" ng-include="'ngapp/transaction/cashiering_payment/construction_bond.html'" include-replace></div>
+            <div ng-if="vm.showOI" ng-include="'ngapp/transaction/cashiering_payment/other_income.html'" include-replace></div>
+        </div>
+    </div>
+</div>

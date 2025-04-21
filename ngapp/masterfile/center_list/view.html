@@ -1,0 +1,76 @@
+<div class="animated fadeIn" ng-controller="CenterListCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3><b>CENTER/PROGRAM LIST</b></h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+					<div class="col-md-7">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 400px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+					</div>
+				<form>
+					<div class="col-md-5">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.search" ng-change="vm.searching()">
+									<label ng-class="{'float':vm.search}">Search Center/Program</label>
+								</div>
+                            </div>
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.searchFull" ng-change="vm.searchingFull()">
+									<label ng-class="{'float':vm.searchFull}">Search Center/Program Fullname</label>
+								</div>
+                            </div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.center_name">
+									<label ng-class="{'float':vm.variables.center_name}">Center Abbreviation</label>
+								</div>
+							</div>
+                        </div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.center_fname">
+									<label ng-class="{'float':vm.variables.center_fname}">Center Fullname</label>
+								</div>
+							</div>
+                        </div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.responsibility">
+									<label ng-class="{'float':vm.variables.responsibility}">Responsibility Center Code</label>
+								</div>
+							</div>
+                        </div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button class="btn btn-md btn-success" ng-click="vm.save()">
+								<b>Save</b>
+							</button>
+							<button type="button" class="btn btn-md btn-primary" ng-click="vm.clearFunction()">
+								<b>New/Clear</b>
+							</button>
+							<button type="button" class="btn btn-md btn-danger" ng-click="vm.delete()">
+								<b>Delete</b>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

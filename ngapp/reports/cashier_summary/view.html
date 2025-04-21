@@ -1,0 +1,144 @@
+<div class="animated fadeIn" ng-controller="CSRCtrl as vm">
+    <div class="row">
+        <div class="progress-card col-md-10">
+            <div class="progress-card-header">
+                <h3>Cash Summary Report</h3>
+            </div>
+            <div class="progress-card-body scroll-on-hover">
+                <form class="bottom-margin" ng-submit="vm.generate()">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="floating-label">
+                                <select class="form-control" ng-model="vm.variables.Mode" ng-class="{'glow': vm.variables.Mode}" required disabled>
+                                    <option></option>
+                                    <option ng-value="1">Daily</option>
+                                    <option ng-value="2">Date Range</option>
+                                </select>
+                                <label ng-class="{'float': vm.variables.Mode}">Mode</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2" ng-if="vm.variables.Mode == 1">
+                            <div class="floating-label">
+                                <input type="text" class="form-control" ng-model="vm.variables.Date" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.Date}">
+                                <label ng-class="{'float': vm.variables.Date}">Date</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2" ng-if="vm.variables.Mode == 2">
+                            <div class="floating-label">
+                                <input type="text" class="form-control" ng-model="vm.variables.From" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.From}">
+                                <label ng-class="{'float': vm.variables.From}">Date From</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2" ng-if="vm.variables.Mode == 2">
+                            <div class="floating-label">
+                                <input type="text" class="form-control" ng-model="vm.variables.To" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.To}">
+                                <label ng-class="{'float': vm.variables.To}">Date To</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="floating-label">
+                                <select class="form-control" ng-model="vm.variables.id" ng-class="{'glow': vm.variables.id}" required>
+                                    <option></option>
+                                    <option ng-repeat="x in vm.cashiers" ng-value="{{x.LoginID}}">{{x.FullName}}</option>
+                                </select>
+                                <label ng-class="{'float': vm.variables.id}">Cashier</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-green inline-button" type="submit">
+                                <i class="fa fa-search fa-fw"></i>&nbsp;Generate</button>
+                            <button class="btn btn-primary inline-button" type="button" ng-click="vm.print()" ng-if="vm.reports.length > 0">
+                                <i class="fa fa-print fa-fw"></i>&nbsp;Print</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="report-div bordered" id="report" ng-if="vm.reports.length > 0">
+                    <div class="header bottom-margin">
+                        <strong>Pueblo Golf Estates Home Owners Association, Inc.</strong>
+                        <span>Masterson Avenue, Upper Canitoan, Cagayan de Oro City, 9000</span>
+                        <span>Contact No.: 09551367134&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: pgehai.bod@gmail.com</span>
+                    </div>
+                    <div class="report-body">
+                        <div class="text-center flex-column">
+                            <span class="f20p">
+                                <strong>CASHIER SUMMARY REPORT</strong>
+                            </span>
+                            <span>
+                                <strong>Period Date From: {{ vm.variables.DateFromWords }} to {{ vm.variables.DateToWords }}</strong>
+                            </span>
+                        </div>
+                        <div class="report-table margin-top-30p">
+                            <table border="1">
+                                <tr>
+                                    <th class="w-150p text-center" rowspan="2">Date</th>
+                                    <th class="w-360p text-center" colspan="3">INCOME</th>
+                                    <th class="w-120p text-center" rowspan="2">Total Official Receipt</th>
+                                    <th class="w-120p text-center" rowspan="2">Refundable Deposit & Bonds/ Acknowledgement Receipt</th>
+                                    <th class="w-150p text-center" rowspan="2">Grand Total</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Monthly Dues</th>
+                                    <th class="text-center">Annual Membership Fee</th>
+                                    <th class="text-center">Other Income</th>
+                                </tr>
+                                <tr ng-repeat="x in vm.reports track by $index">
+                                    <td class="text-center">{{x.DateWord}}</td>
+                                    <td class="text-right">{{x.MD}}</td>
+                                    <td class="text-right">{{x.MF}}</td>
+                                    <td class="text-right">{{x.OI}}</td>
+                                    <td class="text-right">{{x.TotalOR}}</td>
+                                    <td class="text-right">{{x.CB}}</td>
+                                    <td class="text-right">{{x.GrandTotal}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center bold">TOTAL</td>
+                                    <td class="text-right bold">{{vm.totalMD | number: 2}}</td>
+                                    <td class="text-right bold">{{vm.totalMF | number: 2}}</td>
+                                    <td class="text-right bold">{{vm.totalOI | number: 2}}</td>
+                                    <td class="text-right bold">{{vm.GrandTotalOR | number: 2}}</td>
+                                    <td class="text-right bold">{{vm.totalCB | number: 2}}</td>
+                                    <td class="text-right bold">{{vm.GrandestTotal | number: 2}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="signatory-div flex-column w-250p">
+                                        <div>
+                                            <strong>Prepared By:</strong>
+                                        </div>
+                                        <div class="border-bottom h30p flex-end">
+                                            {{vm.userName}}
+                                        </div>
+                                    </div>
+                                    <div class="signatory-div flex-column w-250p">
+                                        <div>
+                                            <strong>Checked By:</strong>
+                                        </div>
+                                        <div class="border-bottom h30p flex-end">
+
+                                        </div>
+                                    </div>
+                                    <div class="signatory-div flex-column w-250p">
+                                        <div>
+                                            <strong>Noted By:</strong>
+                                        </div>
+                                        <div class="border-bottom h30p flex-end">
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div ng-if="vm.records.length == 0" class="text-center">
+                    <h4>
+                        <i>No records found.</i>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

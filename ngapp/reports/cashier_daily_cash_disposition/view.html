@@ -1,0 +1,344 @@
+<div class="animated fadeIn" ng-controller="CDCRCtrl as vm">
+    <div class="row">
+        <div class="progress-card col-md-10">
+            <div class="progress-card-header">
+                <h3>Cash Disposition Report</h3>
+            </div>
+            <div class="progress-card-body scroll-on-hover">
+                <form class="bottom-margin" ng-submit="vm.generate()">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="floating-label">
+                                <select class="form-control" ng-model="vm.variables.Mode" ng-class="{'glow': vm.variables.Mode}" required disabled>
+                                    <option></option>
+                                    <option ng-value="1">Daily</option>
+                                </select>
+                                <label ng-class="{'float': vm.variables.Mode}">Mode</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2" ng-if="vm.variables.Mode == 1">
+                            <div class="floating-label">
+                                <input type="text" class="form-control" ng-model="vm.variables.Date" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.Date}">
+                                <label ng-class="{'float': vm.variables.Date}">Date</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2" ng-if="vm.variables.Mode == 2">
+                            <div class="floating-label">
+                                <input type="text" class="form-control" ng-model="vm.variables.From" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.From}">
+                                <label ng-class="{'float': vm.variables.From}">Date From</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2" ng-if="vm.variables.Mode == 2">
+                            <div class="floating-label">
+                                <input type="text" class="form-control" ng-model="vm.variables.To" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.To}">
+                                <label ng-class="{'float': vm.variables.To}">Date To</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="floating-label">
+                                <select class="form-control" ng-model="vm.variables.id" ng-class="{'glow': vm.variables.id}" required>
+                                    <option></option>
+                                    <option ng-repeat="x in vm.cashiers" ng-value="{{x.LoginID}}">{{x.FullName}}</option>
+                                </select>
+                                <label ng-class="{'float': vm.variables.id}">Cashier</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-green inline-button" type="submit">
+                                <i class="fa fa-search fa-fw"></i>&nbsp;Generate</button>
+                            <button class="btn btn-primary inline-button" type="button" ng-click="vm.print()" ng-if="vm.report">
+                                <i class="fa fa-print fa-fw"></i>&nbsp;Print</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="report-div bordered" ng-if="vm.records.length > 0" id="report">
+                    <div class="header bottom-margin">
+                        <strong>Pueblo Golf Estates Home Owners Association, Inc.</strong>
+                        <span>Masterson Avenue, Upper Canitoan, Cagayan de Oro City, 9000</span>
+                        <span>Contact No.: 09551367134&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: pgehai.bod@gmail.com</span>
+                    </div>
+                    <div class="report-body">
+                        <div class="text-center flex-column">
+                            <span class="f20p">
+                                <strong>DAILY CASHIER CASH DISPOSITION REPORT</strong>
+                            </span>
+                            <span>
+                                <strong>Report Date: {{ vm.variables.DateWords }}</strong>
+                            </span>
+                        </div>
+                        <strong class="bottom-margin">COLLECTED</strong>
+                        <div class="report-title">
+                            <span>I.</span> MONTHLY DUES
+                            <div class="report-table">
+                                <table border="1">
+                                    <tr>
+                                        <th class="w-100p">
+                                            <i>OR No</i>
+                                        </th>
+                                        <th class="w-100p">
+                                            <i>OR Date</i>
+                                        </th>
+                                        <th class="w-200p">
+                                            <i>Customer/ Particulars</i>
+                                        </th>
+                                        <th class="w-200p">
+                                            <i>Payments Details</i>
+                                        </th>
+                                        <th class="w-150p text-right">
+                                            <i>Amount</i>
+                                        </th>
+                                        <th class="w-150p text-right">
+                                            <i>Remarks</i>
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="x in vm.md">
+                                        <td>{{x.ORNo}}</td>
+                                        <td>{{x.TDate}}</td>
+                                        <td>{{x.FullName}}</td>
+                                        <td>{{x.Particulars}}</td>
+                                        <td class="text-right">{{x.AmountDue | number: 2}}</td>
+                                        <td class="text-right">{{x.Remarks}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="text-right">
+                                            <strong>SUB TOTAL MONTHLY DUES</strong>
+                                        </td>
+                                        <td class="text-right">{{vm.totalMD | number: 2}}</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="report-title">
+                            <span>II.</span> ANNUAL MEMBERSHIP FEE
+                            <div class="report-table">
+                                <table border="1">
+                                    <tr>
+                                        <th class="w-100p">
+                                            <i>OR No</i>
+                                        </th>
+                                        <th class="w-100p">
+                                            <i>OR Date</i>
+                                        </th>
+                                        <th class="w-200p">
+                                            <i>Customer/ Particulars</i>
+                                        </th>
+                                        <th class="w-200p">
+                                            <i>Payments Details</i>
+                                        </th>
+                                        <th class="w-150p text-right">
+                                            <i>Amount</i>
+                                        </th>
+                                        <th class="w-150p text-right">
+                                            <i>Remarks</i>
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="x in vm.af">
+                                        <td>{{x.ORNo}}</td>
+                                        <td>{{x.TDate}}</td>
+                                        <td>{{x.FullName}}</td>
+                                        <td>{{x.Particulars}}</td>
+                                        <td class="text-right">{{x.AmountDue | number: 2}}</td>
+                                        <td class="text-right">{{x.Remarks}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="text-right">
+                                            <strong>SUB TOTAL ANNUAL MEMBERSHIP FEE</strong>
+                                        </td>
+                                        <td class="text-right">{{vm.totalAF | number: 2}}</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="report-title">
+                            <span>III.</span> OTHER INCOME
+                            <div class="report-table">
+                                <table border="1">
+                                    <tr>
+                                        <th class="w-100p">
+                                            <i>OR No</i>
+                                        </th>
+                                        <th class="w-100p">
+                                            <i>OR Date</i>
+                                        </th>
+                                        <th class="w-200p">
+                                            <i>Customer/ Particulars</i>
+                                        </th>
+                                        <th class="w-200p">
+                                            <i>Payments Details</i>
+                                        </th>
+                                        <th class="w-150p text-right">
+                                            <i>Amount</i>
+                                        </th>
+                                        <th class="w-150p text-right">
+                                            <i>Remarks</i>
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="x in vm.oi">
+                                        <td>{{x.ORNo}}</td>
+                                        <td>{{x.TDate}}</td>
+                                        <td>{{x.FullName}}</td>
+                                        <td>{{x.Particulars}}</td>
+                                        <td class="text-right">{{x.AmountDue | number: 2}}</td>
+                                        <td class="text-right">{{x.Remarks}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="text-right">
+                                            <strong>SUB TOTAL OTHER INCOME</strong>
+                                        </td>
+                                        <td class="text-right">{{vm.totalOI | number: 2}}</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="sub-total-div">
+                            <div class="row">
+                                <div class="col-md-7 text-right">
+                                    <strong>TOTAL OFFICIAL RECEIPT AMOUNT-COLLECTION</strong>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <strong>Php {{vm.totalOR | number : 2}} </strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="report-title">
+                            <span>IV.</span> REFUNDABLE DEPOSIT & BONDS
+                            <div class="report-table">
+                                <table border="1">
+                                    <tr>
+                                        <th class="w-100p">
+                                            <i>OR No</i>
+                                        </th>
+                                        <th class="w-100p">
+                                            <i>OR Date</i>
+                                        </th>
+                                        <th class="w-200p">
+                                            <i>Customer/ Particulars</i>
+                                        </th>
+                                        <th class="w-200p">
+                                            <i>Payments Details</i>
+                                        </th>
+                                        <th class="w-150p text-right">
+                                            <i>Amount</i>
+                                        </th>
+                                        <th class="w-150p text-right">
+                                            <i>Remarks</i>
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="x in vm.cb">
+                                        <td>{{x.ORNo}}</td>
+                                        <td>{{x.TDate}}</td>
+                                        <td>{{x.FullName}}</td>
+                                        <td>{{x.Particulars}}</td>
+                                        <td class="text-right">{{x.AmountDue | number: 2}}</td>
+                                        <td class="text-right">{{x.Remarks}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="text-right">
+                                            <strong>SUB TOTAL REFUNDABLE DEPOSIT & BONDS</strong>
+                                        </td>
+                                        <td class="text-right">{{vm.totalCB | number: 2}}</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="sub-total-div">
+                            <div class="row">
+                                <div class="col-md-7 text-right">
+                                    <strong>TOTAL ACKNOWLEDGEMENT FORM AMOUNT</strong>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <strong>Php {{vm.totalCB | number: 2}}</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7 text-right">
+                                    <strong class="f20p">GRAND TOTAL AMOUNT</strong>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <strong class="f20p">Php {{vm.grandTotal | number: 2}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="report-title">
+                            BREAKDOWN OF COLLECTIONS:
+                            <div class="report-table">
+                                <table border="1">
+                                    <tr ng-repeat="x in vm.paymentModes">
+                                        <td class="w-450p">{{x.mode}}</td>
+                                        <td class="text-right w-450p">{{x.total | number: 2}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="report-title" ng-if="vm.checks.length > 0">
+                            RECEIVED CHECK DETAILS FOR DEPOSITS
+                            <div class="report-table">
+                                <table border="1">
+                                    <tr>
+                                        <th class="w-200p">
+                                            <i>Check No</i>
+                                        </th>
+                                        <th class="w-250p">
+                                            <i>Check Date </i>
+                                        </th>
+                                        <th class="w-250p">
+                                            <i>Check Amount </i>
+                                        </th>
+                                        <th class="w-200p">
+                                            <i>Check-Bank</i>
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="x in vm.checks">
+                                        <td>{{x.CardCheckNo}}</td>
+                                        <td>{{x.TranCheckDate | date: 'MM-dd-yyyy'}}</td>
+                                        <td class="text-right">{{x.AmountTender | number: 2}}</td>
+                                        <td>{{x.CardCheckBank}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="signatory-div flex-column w-250p">
+                                        <div>
+                                            <strong>Prepared By:</strong>
+                                        </div>
+                                        <div class="border-bottom h30p flex-end">
+                                            {{vm.userName}}
+                                        </div>
+                                    </div>
+                                    <div class="signatory-div flex-column w-250p">
+                                        <div>
+                                            <strong>Checked By:</strong>
+                                        </div>
+                                        <div class="border-bottom h30p flex-end">
+
+                                        </div>
+                                    </div>
+                                    <div class="signatory-div flex-column w-250p">
+                                        <div>
+                                            <strong>Noted By:</strong>
+                                        </div>
+                                        <div class="border-bottom h30p flex-end">
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div ng-if="vm.records.length == 0" class="text-center">
+                    <h4>
+                        <i>No records found.</i>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

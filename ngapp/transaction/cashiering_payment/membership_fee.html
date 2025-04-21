@@ -1,0 +1,85 @@
+<!-- <div class="animated fadeIn">
+    <div class="row bottom-margin">
+        <div class="progress-card green col-md-6">
+            <div class="progress-card-header">
+                <div class="header-button-group">
+                    <h4>Unpaid Membership Fees</h4>
+                    <div class="btn-group">
+                        <button class="btn" type="button" ng-click="vm.append(2)">
+                            <i class="fa fa-plus fa-fw"></i>Append</button>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-card-body">
+                <div style="height: 250px;" ui-grid="vm.annualFeeGrid" ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize></div>
+            </div>
+        </div>
+        <div class="progress-card green col-md-6">
+            <div class="progress-card-header">
+                <h4>Manual/Advance Payment</h4>
+            </div>
+            <div class="progress-card-body">
+                <form ng-submit="vm.saveFee()">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="floating-label">
+                                <input type="text" class="form-control" ng-model="vm.fee.xYear" maxlength="4" ng-class="{'glow': vm.fee.xYear}" required>
+                                <label ng-class="{'float': vm.fee.xYear}">Year</label>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="floating-label">
+                                <input type="text" class="form-control text-right" ng-model="vm.fee.DebitAmt" ng-class="{'glow': vm.fee.DebitAmt}" disabled>
+                                <label ng-class="{'float': vm.fee.DebitAmt}">Amount</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-save fa-fw"></i>Save</button>
+                                <button type="button" class="btn btn-default" ng-click="vm.clearFees()">
+                                    <i class="fa fa-times fa-fw"></i>Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-skyblue" type="button" ng-click="vm.changeBox('Header', 1)">
+                    <i class="fa fa-chevron-left fa-fw"></i> Go Back to Header</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="footer-modal-box" ng-class="{'minimize': vm.minimizeMF}">
+    <div class="progress-card green">
+        <div class="progress-card-header" ng-click="vm.minimizeModals('MF')">
+            <div class="header-button-group">
+                <h4>Membership Fee</h4>
+                <div class="btn-group">
+                    <button type="button" class="btn-clear" ng-click="vm.showModals('MF', false)">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="progress-card-body" ng-class="{'minimize': vm.minimizeMF}">
+            <div class="row">
+                <div class="col-md-12 bottom-margin">
+                    <div style="height: 250px;" ui-grid="vm.annualFeeGrid" ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+                <div class="col-md-12">
+                    <button class="btn btn-lg btn-green full-width" type="button" ng-click="vm.append(2)">
+                        <i class="fa fa-plus fa-fw"></i>Append</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

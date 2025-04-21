@@ -1,0 +1,85 @@
+<div class="modal-content">
+    <div class="modal-title-div">
+        <strong class="modal-title-name">Create Production</strong>
+        <button class="modal-exit" ng-click="modal.close()">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-change="modal.seriesChanger()" ng-model="modal.variables.production_date" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': modal.variables.production_date}">
+                    <label ng-class="{'float': modal.variables.production_date}">Production date</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-change="modal.seriesChanger()" ng-model="modal.variables.batch_no" ng-class="{'glow': modal.variables.batch_no}" disabled>
+                    <label ng-class="{'float':modal.variables.batch_no}">Batch no.</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="floating-label">
+                    <input style="text-align: right;" type="text" class="form-control" ng-change="modal.seriesChanger()" ng-model="modal.variables.batch_output" ng-class="{'glow': modal.variables.batch_output}">
+                    <label ng-class="{'float':modal.variables.batch_output}">Batch output</label>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <div class="group-input">
+                            <input type="text" class="form-control" ng-model="modal.variables.item_name" ng-class="{'glow': modal.variables.item_name}" disabled>
+                            <label ng-class="{'float':modal.variables.item_name}" >Item Name</label>
+                            <div class="button-group-append">
+                                <button type="button" class="btn btn-info btn-sm" ng-click="modal.openSubaccount()">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <div class="group-input">
+                            <input type="text" class="form-control" ng-model="modal.variables.office" ng-class="{'glow': modal.variables.office}" disabled>
+                            <!-- <div class="button-group-append">
+                                <button type="button" class="btn btn-info btn-sm" ng-click="modal.openOffice()">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div> -->
+                        </div>
+                        <label ng-class="{'float': modal.variables.office}">Account</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align: right;" type="text" class="form-control" ng-model="modal.variables.uacs_code" ng-class="{'glow': modal.variables.uacs_code}" disabled>
+                        <label ng-class="{'float':modal.variables.uacs_code}" >UACS code</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input style="text-align: right;" type="text" class="form-control" ng-model="modal.variables.office_code" ng-class="{'glow': modal.variables.office_code}" disabled>
+                        <label ng-class="{'float':modal.variables.office_code}" >Account code</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="floating-label">
+                        <!-- <input type="text" class="form-control" ng-model="vm.variablesdtl.description" ng-class="{'glow': vm.variablesdtl.description}" disabled> -->
+                        <textarea type="text" class="form-control" ng-model="modal.variables.item_desc" rows="10" disabled></textarea>
+                        <label ng-class="{'float':modal.variables.item_desc}" >Description</label>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button type="button" class="btn btn-success btn-md" ng-click="modal.save()"><b>SAVE</b></button>
+                <button type="button" class="btn btn-primary btn-md"><b>NEW/CLEAR</b></button>
+            </div>
+        </div>
+    </div>
+</div>

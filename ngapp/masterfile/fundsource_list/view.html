@@ -1,0 +1,67 @@
+<div class="animated fadeIn" ng-controller="FundsourceCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3><b>FUND SOURCE LIST</b></h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 400px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.search" ng-change="vm.searching()">
+									<label ng-class="{'float':vm.search}">Search Fund Source</label>
+								</div>
+                            </div>
+                            <div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.searchcode" ng-change="vm.searchingcode()">
+									<label ng-class="{'float':vm.searchcode}">Search Fund Code</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.fund_name">
+									<label ng-class="{'float':vm.variables.fund_name}">Fundsource Name</label>
+								</div>
+							</div>
+                        </div>
+                        <div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.fund_code">
+									<label ng-class="{'float':vm.variables.fund_code}">Fundsource Code</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button class="btn btn-md btn-success" ng-click="vm.save()">
+								<b>Save</b>
+							</button>
+							<button class="btn btn-md btn-primary" ng-click="vm.clearFunction()">
+								<b>New/Clear</b>
+							</button>
+							<button class="btn btn-md btn-danger" ng-click="vm.delete()">
+								<b>Delete</b>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

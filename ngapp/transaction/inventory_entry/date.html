@@ -1,0 +1,32 @@
+<div class="modal-content">
+    <div class="modal-title-div">
+        <strong class="modal-title-name">Generate by date</strong>
+        <button class="modal-exit" ng-click="modal.close()">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.from" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': modal.variables.from}">
+                        <label ng-class="{'float': modal.variables.from}">Date from</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.to" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': modal.variables.to}">
+                    <label ng-class="{'float': modal.variables.to}">Date to</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button ng-click="modal.generateSlc()" type="button" class="btn btn-success btn-md"><strong>Generate</strong></button>
+                <button type="button" ng-click="modal.close()" class="btn btn-warning btn-md"><strong>Close</strong></button>
+            </div>
+        </div>
+    </div>
+</div>

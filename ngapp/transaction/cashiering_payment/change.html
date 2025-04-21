@@ -1,0 +1,13 @@
+<div class="confirmation-dialog">
+    <div class="flex-row">
+        <div class="confirmation-text flex-column">
+            <h5>Total Amount Due: Php {{modal.variables.TotalAmountPayable | number: 2}}</h5>
+            <h5>{{modal.variables.PaymentType}}: Php {{modal.variables.TotalAmountActualPaid | number: 2}}</h5>
+            <h5>Change: Php {{modal.variables.Change | number: 2}}</h5>
+        </div>
+    </div>
+    <div class="text-right">
+        <button class="btn btn-truth" type="button" ng-click="modal.close(true)">CLOSE</button>
+        <button class="btn btn-truth" type="button" ng-click="modal.print()">PRINT</button>
+    </div>
+</div>

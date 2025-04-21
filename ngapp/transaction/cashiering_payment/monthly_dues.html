@@ -1,0 +1,133 @@
+<!-- <div class="animated fadeIn">
+    <div class="row bottom-margin">
+        <div class="progress-card green col-md-6">
+            <div class="progress-card-header">
+                <div class="header-button-group">
+                    <h4>Unpaid Monthly Dues</h4>
+                    <div class="btn-group">
+                        <button class="btn" type="button" ng-click="vm.append(1)">
+                            <i class="fa fa-plus fa-fw"></i>Append</button>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-card-body">
+                <div style="height: 250px;" ui-grid="vm.monthlyDuesGrid" ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize></div>
+            </div>
+        </div>
+        <div class="progress-card green col-md-6">
+            <div class="progress-card-header">
+                <h4>Manual/Advance Payment</h4>
+            </div>
+            <div class="progress-card-body">
+                <form ng-submit="vm.saveDue()">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="floating-label">
+                                <select class="form-control" ng-model="vm.due.xMonth" ng-class="{'glow': vm.due.xMonth}" required>
+                                    <option></option>
+                                    <option value="{{x.number}}" ng-repeat="x in vm.months">{{x.month}}</option>
+                                </select>
+                                <label ng-class="{'float': vm.due.xMonth}">Month</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="floating-label">
+                                <input type="text" class="form-control" ng-model="vm.due.xYear" maxlength="4" ng-class="{'glow': vm.due.xYear}" required>
+                                <label ng-class="{'float': vm.due.xYear}">Year</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="floating-label">
+                                <input type="text" class="form-control text-right" ng-model="vm.due.DebitAmt" ng-class="{'glow': vm.due.DebitAmt}" disabled>
+                                <label ng-class="{'float': vm.due.DebitAmt}">Amount</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-save fa-fw"></i>Save</button>
+                                <button type="button" class="btn btn-default" ng-click="vm.clearDues()">
+                                    <i class="fa fa-times fa-fw"></i>Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-skyblue" type="button" ng-click="vm.changeBox('Header', 1)">
+                    <i class="fa fa-chevron-left fa-fw"></i> Go Back to Header</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="footer-modal-box" ng-class="{'minimize': vm.minimizeMD}">
+    <div class="progress-card green">
+        <div class="progress-card-header">
+            <div class="header-button-group">
+                <h4 ng-click="vm.minimizeModals('MD')">Monthly Dues</h4>
+                <div class="btn-group">
+                    <button type="button" class="btn-clear" title="Advance 1 year with Discount" ng-if="!vm.minimizeMD" ng-click="vm.discount()">
+                        <i class="fa fa-tags"></i>
+                    </button>
+                    <div class="dropdown show" ng-class="{'open': vm.openDM}">
+                        <button type="button" class="btn-clear dropdown-toggle" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false"
+                            ng-if="!vm.minimizeMD" ng-click="vm.openDM = !vm.openDM" title="Add Manually">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <div class="dropdown-menu right" aria-labelledby="dropdownMenuLink">
+                            <form ng-submit="vm.saveDue()">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <strong>Add Manually</strong>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="floating-label sm">
+                                            <select class="form-control" ng-model="vm.due.xMonth" ng-class="{'glow': vm.due.xMonth}" required>
+                                                <option></option>
+                                                <option value="{{x.number}}" ng-repeat="x in vm.months">{{x.month}}</option>
+                                            </select>
+                                            <label ng-class="{'float': vm.due.xMonth}">Month</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="floating-label sm">
+                                            <input type="text" class="form-control" ng-model="vm.due.xYear" maxlength="4" ng-class="{'glow': vm.due.xYear}" required>
+                                            <label ng-class="{'float': vm.due.xYear}">Year</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-right">
+                                        <button type="submit" class="btn-sm btn-primary">
+                                            <i class="fa fa-save fa-fw"></i>Save</button>
+                                        <button type="button" class="btn-sm btn-default" ng-click="vm.openDM = false">
+                                            <i class="fa fa-times fa-fw"></i>Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-clear" ng-click="vm.showModals('MD', false)" title="Exit">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="progress-card-body" ng-class="{'minimize': vm.minimizeMD}">
+            <div class="row">
+                <div class="col-md-12 bottom-margin">
+                    <div style="height: 250px;" ui-grid="vm.monthlyDuesGrid" ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+                <div class="col-md-12">
+                    <button class="btn btn-lg btn-green full-width" type="button" ng-click="vm.append(1)">
+                        <i class="fa fa-plus fa-fw"></i>Append</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+<div class="animated fadeIn" ng-controller="ProductionCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3><b>Production</b></h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="floating-label">
+							<div class="group-input">
+								<input type="text" class="form-control" ng-model="vm.variables.batch_no" ng-class="{'glow': vm.variables.batch_no}" disabled>
+								<div class="button-group-append">
+									<button type="button" class="btn btn-info btn-sm" ng-click=" vm.openBatchList()">
+										<i class="fa fa-search"></i>
+									</button>
+									<button type="button" class="btn btn-primary btn-sm" ng-click=" vm.createBatch(1)">
+										<i class="fa fa-edit"></i>
+									</button>
+									<button type="button" class="btn btn-success btn-sm" ng-click="vm.createBatch()">
+										<i class="fa fa-plus"></i>
+									</button>
+								</div>
+							</div>
+							<label ng-class="{'float': vm.variables.batch_no}">Batch no.</label>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.production_date" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.production_date}" disabled>
+                            <label ng-class="{'float': vm.variables.production_date}">Production date</label>
+                        </div>
+					</div>
+					<div class="col-md-4">
+						<div class="floating-label">
+							<div class="group-input">
+								<input style="text-align: right;" type="text" class="form-control" ng-model="vm.variables.batch_output" ng-class="{'glow': vm.variables.batch_output}" disabled>
+								<label ng-class="{'float':vm.variables.batch_output}" >Batch output</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="floating-label">
+							<div class="group-input">
+								<input type="text" class="form-control" ng-model="vm.variables.item_name" ng-class="{'glow': vm.variables.item_name}" disabled>
+								<label ng-class="{'float':vm.variables.item_name}" >Item Name</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<div class="group-input">
+								<input type="text" class="form-control" ng-model="vm.variables.office" ng-class="{'glow': vm.variables.office}" disabled>
+							</div>
+							<label ng-class="{'float': vm.variables.office}">Account</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input style="text-align: right;" type="text" class="form-control" ng-model="vm.variables.uacs_code" ng-class="{'glow': vm.variables.uacs_code}" disabled>
+							<label ng-class="{'float':vm.variables.uacs_code}" >UACS code</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input style="text-align: right;" type="text" class="form-control" ng-model="vm.variables.office_code" ng-class="{'glow': vm.variables.office_code}" disabled>
+							<label ng-class="{'float':vm.variables.office_code}" >Account code</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="floating-label">
+							<!-- <input type="text" class="form-control" ng-model="vm.variablesdtl.description" ng-class="{'glow': vm.variablesdtl.description}" disabled> -->
+							<textarea style="resize: none;" type="text" class="form-control" ng-model="vm.variables.item_desc" rows="4" disabled></textarea>
+							<label ng-class="{'float':vm.variables.item_desc}" >Description</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 270px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+                        <div class="floating-label">
+                            <div class="group-input">
+                                <input type="text" class="form-control" ng-model="vm.variablesdtl.po_num" ng-class="{'glow': vm.variablesdtl.po_num}" disabled>
+                                <div class="button-group-append">
+                                    <button type="button" class="btn btn-info btn-sm" ng-click="vm.openModal(1)">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <label ng-class="{'float': vm.variablesdtl.po_num}">PO number</label>
+                        </div>
+					</div>
+					<div class="col-md-3">
+                        <div class="floating-label">
+                            <div class="group-input">
+                                <input type="text" class="form-control" ng-change="vm.filter()" ng-model="vm.variablesdtl.item_code" ng-class="{'glow': vm.variablesdtl.item_code}" disabled>
+                                <div class="button-group-append">
+                                    <button type="button" class="btn btn-info btn-sm" ng-click="vm.openModal()">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <label ng-class="{'float': vm.variablesdtl.item_code}">Property number</label>
+                        </div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input type="text" class="form-control" ng-model="vm.variablesdtl.unit_name" ng-class="{'glow': vm.variablesdtl.unit_name}" disabled>
+							<label ng-class="{'float': vm.variablesdtl.unit_name}">Unit</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input type="text" class="form-control" ng-model="vm.variablesdtl.fund_name" ng-class="{'glow': vm.variablesdtl.fund_name}" disabled>
+							<label ng-class="{'float': vm.variablesdtl.fund_name}">Fund name</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input style="text-align: right;" type="text" ng-disabled="vm.disabled" ng-change="vm.compute()" class="form-control" ng-model="vm.variablesdtl.qty_issue" ng-class="{'glow': vm.variables.qty_issue}">
+							<label ng-class="{'float': vm.variablesdtl.qty_issue}">Qty</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input style="text-align: right;color:red;" ng-change="vm.compute()" type="text" class="form-control" ng-model="vm.variablesdtl.unitcost_issue" ng-class="{'glow': vm.variables.unitcost_issue}" disabled>
+							<label ng-class="{'float': vm.variablesdtl.unitcost_issue}">Unit Cost</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input style="text-align: right;color:red;" type="text" class="form-control" ng-model="vm.totaliss" ng-class="{'glow': vm.totaliss}" disabled>
+							<label ng-class="{'float': vm.totaliss}">Total Cost</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input type="text" class="form-control" ng-model="vm.variablesdtl.trans_date" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variablesdtl.trans_date}">
+							<label ng-class="{'float': vm.variablesdtl.trans_date}">Transaction Date</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<!-- <div class="col-md-3">
+						<div class="floating-label">
+							<input type="text" class="form-control" ng-model="vm.variables.ris" ng-class="{'glow': vm.variables.ris}">
+							<label ng-class="{'float': vm.variables.ris}">RIS</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input type="text" class="form-control" ng-model="vm.variables.jev" ng-class="{'glow': vm.variables.jev}">
+							<label ng-class="{'float': vm.variables.jev}">JEV</label>
+						</div>
+					</div> -->
+					<div class="col-md-3" hidden>
+						<div class="floating-label">
+							<input style="text-align: right;color:red;" type="text" class="form-control" ng-model="vm.inventorytotalcost" ng-class="{'glow': vm.inventorytotalcost}" disabled>
+							<label ng-class="{'float': vm.inventorytotalcost}">Inventory Total Cost</label>
+						</div>
+					</div>
+					<!-- <div class="col-md-3">
+						<div class="floating-label">
+							<input type="text" class="form-control" ng-model="vm.variablesdtl.division_unit" ng-class="{'glow': vm.variablesdtl.division_unit}">
+							<label ng-class="{'float': vm.variablesdtl.division_unit}">Issuance (Division/Unit) / Remarks</label>
+						</div>
+					</div> -->
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input style="text-align: right;color:red;" type="text" class="form-control" ng-model="vm.inventorycount" ng-class="{'glow': vm.inventorycount}" disabled>
+							<label ng-class="{'float': vm.inventorycount}">Qty inventory count</label>
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button class="btn btn-md btn-success" ng-click="vm.save()">
+								<b>Save</b>
+							</button>
+							<button class="btn btn-md btn-primary" ng-click="vm.clearFunction()">
+								<b>New/Clear</b>
+							</button>
+							<button class="btn btn-md btn-danger" ng-click="vm.delete()">
+								<b>Delete</b>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

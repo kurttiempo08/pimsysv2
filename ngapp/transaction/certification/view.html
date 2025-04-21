@@ -1,0 +1,242 @@
+<div class="animated fadeIn" ng-controller="CertificationCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3>Certificate Issuance</h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+                    <div class="col-md-2">
+                        <div class="floating-label">
+                            <div class="group-input">
+                                <input type="text" class="form-control" ng-model="vm.variables.client_name">
+                                <label ng-class="{'float':vm.variables.client_name}">Client name</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.client_tradename">
+                            <label ng-class="{'float':vm.variables.client_tradename}">Trade name</label>
+                        </div>
+					</div>
+                    <div class="col-md-2">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.client_address">
+                            <label ng-class="{'float':vm.variables.client_address}">Address</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+						<div class="floating-label">
+							<select class="form-control" ng-model="vm.variables.client_barangay" id="barangay">
+								<option value="{{x.barangay}}" ng-repeat="x in vm.barangaylist" ng-click="vm.getRow(x)">{{x.barangay}}</option>
+							</select>
+							<label ng-class="{'float':vm.variables.client_barangay}" for="barangay">Barangay</label>
+						</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.client_contact">
+                            <label ng-class="{'float':vm.variables.client_contact}">Contact</label>
+                        </div>
+                    </div>
+					<div class="col-md-2">
+						<div class="floating-label">
+							<select class="form-control" ng-model="vm.variables.request_type" id="animal">
+								<option value="PROCESS FOOD">PROCESS FOOD</option>
+                                <option value="MEAT">MEAT</option>
+                                <option value="CHICKEN">CHICKEN</option>
+							</select>
+							<label ng-class="{'float':vm.variables.request_type}" for="animal">Certification type</label>
+						</div>
+					</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.client_remarks">
+                            <label ng-class="{'float':vm.variables.client_remarks}">Remarks</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+						<div class="floating-label">
+							<select class="form-control" ng-model="vm.variables.client_status" id="animal">
+								<option value="CLEARED">CLEARED</option>
+                                <option value="PENDING">PENDING</option>
+							</select>
+							<label ng-class="{'float':vm.variables.client_status}" for="animal">Certification status</label>
+						</div>
+					</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.inspected">
+                            <label ng-class="{'float':vm.variables.inspected}">Inspected by</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.date_inspected" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.date_inspected}">
+                            <label ng-class="{'float': vm.variables.date_inspected}">Date done</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.client_BPYear">
+                            <label ng-class="{'float':vm.variables.client_BPYear}">BP Year</label>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="floating-label">
+							<select class="form-control" ng-model="vm.variables.client_dayissuance" id="animal">
+								<option value="1st">1st</option>
+                                <option value="2nd">2nd</option>
+                                <option value="3rd">3rd</option>
+                                <option value="4th">4th</option>
+                                <option value="5th">5th</option>
+                                <option value="6th">6th</option>
+                                <option value="7th">7th</option>
+                                <option value="8th">8th</option>
+                                <option value="9th">9th</option>
+                                <option value="10th">10th</option>
+                                <option value="11th">11th</option>
+                                <option value="12th">12th</option>
+                                <option value="13th">13th</option>
+                                <option value="14th">14th</option>
+                                <option value="15th">15th</option>
+                                <option value="16th">16th</option>
+                                <option value="17th">17th</option>
+                                <option value="18th">18th</option>
+                                <option value="19th">19th</option>
+                                <option value="20th">20th</option>
+                                <option value="21st">21st</option>
+                                <option value="22nd">22nd</option>
+                                <option value="23rd">23rd</option>
+                                <option value="24th">24th</option>
+                                <option value="25th">25th</option>
+                                <option value="26th">26th</option>
+                                <option value="27th">27th</option>
+                                <option value="28th">28th</option>
+                                <option value="29th">29th</option>
+                                <option value="30th">30th</option>
+                                <option value="31st">31st</option>
+							</select>
+							<label ng-class="{'float':vm.variables.client_dayissuance}" for="animal">Day</label>
+						</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="floating-label">
+							<select class="form-control" ng-model="vm.variables.client_monthissuance" id="animal">
+								<option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+							</select>
+							<label ng-class="{'float':vm.variables.client_monthissuance}" for="animal">Month</label>
+						</div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.client_yearissuance">
+                            <label ng-class="{'float':vm.variables.client_yearissuance}">Year</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.client_signatory">
+                            <label ng-class="{'float':vm.variables.client_signatory}">Signatory</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.client_designation">
+                            <label ng-class="{'float':vm.variables.client_designation}">Designation</label>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-2">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.client_designation2">
+                            <label ng-class="{'float':vm.variables.client_designation2}">Designation (Optional)</label>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.search" ng-change="vm.searching()">
+                            <label ng-class="{'float':vm.search}">Search Client Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.searchtrade" ng-change="vm.searchingTrade()">
+                            <label ng-class="{'float':vm.searchtrade}">Search Trade name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+						<div class="floating-label">
+							<select class="form-control" ng-model="vm.searchbarangay" id="barangay" ng-change="vm.searchfilterbarangay()">
+								<option value="{{x.barangay}}" ng-repeat="x in vm.barangaylist" ng-click="vm.getRow(x)">{{x.barangay}}</option>
+							</select>
+							<label ng-class="{'float':vm.searchbarangay}" for="barangay">Generate/Filter by Brgy</label>
+						</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.searchBPYear" ng-change="vm.searchfilterBPYear()">
+                            <label ng-class="{'float':vm.searchBPYear}">Generate/Filter BP Year</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 280px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+					</div>
+                </div>
+
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-12 text-right">
+                            <button class="btn btn-lg btn-info" type="button" ng-click="vm.printCertification()">
+								<b>PRINT CERTIFICATION</b>
+                            </button>
+                            <button class="btn btn-lg btn-default" type="button" ng-click="vm.printFilter(2)">
+								<b>GENERATE BP YEAR</b>
+                            </button>
+                            <button class="btn btn-lg btn-warning" type="button" ng-click="vm.printFilter(1)">
+								<b>GENERATE BP BRGY</b>
+							</button>
+							<button class="btn btn-lg btn-success" ng-click="vm.save()">
+								<b>SAVE</b>
+                            </button>
+                            <!-- <button class="btn btn-lg btn-info" ng-click="vm.generateRequest()">
+								<b>PRINT CUSTOMER REQUEST</b>
+							</button> -->
+							<button class="btn btn-lg btn-primary" type="button" ng-click="vm.clearFunction()">
+								<b>NEW</b>
+							</button>
+							<button class="btn btn-lg btn-danger" type="button" ng-click="vm.delete()">
+								<b>DELETE</b>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

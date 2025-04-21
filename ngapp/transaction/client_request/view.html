@@ -1,0 +1,375 @@
+<div class="animated fadeIn" ng-controller="ClientrequestCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3>Client Request</h3>
+			</div>
+			<div class="progress-card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="floating-label">
+                            <div class="group-input">
+                                <input type="text" class="form-control" ng-model="vm.variables.recepient_name" disabled>
+                                <label ng-class="{'float':vm.variables.recepient_name}">Client</label>
+                                <div class="button-group-append">
+                                    <button type="button" class="btn" ng-click="vm.openRecepient(1)">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                    <button type="button" class="btn" ng-click="vm.openAddclient()">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.recp_address">
+                            <label ng-class="{'float':vm.variables.recp_address}">Address</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.recp_contact">
+                            <label ng-class="{'float':vm.variables.recp_contact}">Contact #</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.request_date" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.request_date}"
+                                >
+                            <label ng-class="{'float': vm.variables.request_date}">Request date</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.search" ng-change="vm.searching()">
+                            <label ng-class="{'float':vm.search}">Search Client</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.searchtype" ng-change="vm.searchingrequest()">
+                            <label ng-class="{'float':vm.searchtype}">Search Request type</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.action">
+                            <label ng-class="{'float':vm.variables.action}">Action Taken</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.date_done" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.date_done}"
+                                disabled>
+                            <label ng-class="{'float': vm.date_done}">Date done</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.remarks" disabled>
+                            <label ng-class="{'float':vm.variables.remarks}">Remarks</label>
+                        </div>
+                    </div>
+                </div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 280px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+					</div>
+                </div>
+                
+                <div class="row">
+
+                    <div class="progress-card col-md-3">
+                        <div class="progress-card-header" data-toggle="collapse" href="#samplecollection">
+                            <h3>Sample Collection <span class="fa fa-plus"></span></h3>
+                        </div>
+                        <div class="progress-card-body collapse" id="samplecollection">
+                            <div class="col-md-12">
+                                <div class="floating-label ">
+                                    <input type="text" class="form-control" ng-model="vm.variables.scom_test">
+                                    <label ng-class="{'float':vm.variables.scom_test}">Test</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="floating-label ">
+                                    <input type="text" class="form-control" ng-model="vm.variables.scom_species">
+                                    <label ng-class="{'float':vm.variables.scom_species}">Species</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="floating-label ">
+                                    <input type="text" class="form-control" ng-model="vm.variables.scom_noofheads">
+                                    <label ng-class="{'float':vm.variables.scom_noofheads}">No. of head</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button type="button" class="btn btn-md btn-success" ng-click="vm.save(1)"><strong>SAVE REQUEST</strong></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="progress-card col-md-3">
+                            <div class="progress-card-header" data-toggle="collapse" href="#treatment">
+                                <h3>Treatment/Check-up <span class="fa fa-plus"></span></h3>
+                            </div>
+                            <div class="progress-card-body collapse" id="treatment">
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.tc_species">
+                                        <label ng-class="{'float':vm.variables.tc_species}">Species</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.tc_noofheads">
+                                        <label ng-class="{'float':vm.variables.tc_noofheads}">No. of heads</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.tc_symptoms">
+                                        <label ng-class="{'float':vm.variables.tc_symptoms}">Symptoms</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-right">
+                                        <button type="button" class="btn btn-md btn-success" ng-click="vm.save(2)"><strong>SAVE REQUEST</strong></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-card col-md-3">
+                            <div class="progress-card-header" data-toggle="collapse" href="#euthanasia">
+                                <h3>Euthanasia <span class="fa fa-plus"></span></h3>
+                            </div>
+                            <div class="progress-card-body collapse" id="euthanasia">
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.euth_species">
+                                        <label ng-class="{'float':vm.variables.euth_species}">Species</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.euth_noofheads">
+                                        <label ng-class="{'float':vm.variables.euth_noofheads}">No. of heads</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.euth_reason">
+                                        <label ng-class="{'float':vm.variables.euth_reason}">Reason</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-right">
+                                        <button type="button" class="btn btn-md btn-success" ng-click="vm.save(3)"><strong>SAVE REQUEST</strong></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-card col-md-3">
+                            <div class="progress-card-header" data-toggle="collapse" href="#spay">
+                                <h3>Spay & Castration <span class="fa fa-plus"></span></h3>
+                            </div>
+                            <div class="progress-card-body collapse" id="spay">
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.sc_species">
+                                        <label ng-class="{'float':vm.variables.sc_species}">Species</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.sc_age">
+                                        <label ng-class="{'float':vm.variables.sc_age}">Age</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.sc_sex">
+                                        <label ng-class="{'float':vm.variables.sc_sex}">Sex</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.sc_noofheads">
+                                        <label ng-class="{'float':vm.variables.sc_noofheads}">No. of heads</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-right">
+                                        <button type="button" class="btn btn-md btn-success" ng-click="vm.save(4)"><strong>SAVE REQUEST</strong></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div><br>
+                <div class="row">
+                    <div class="progress-card col-md-3">
+                        <div class="progress-card-header" data-toggle="collapse" href="#ai">
+                            <h3>Artificial Insemination <span class="fa fa-plus"></span></h3>
+                        </div>
+                        <div class="progress-card-body collapse" id="ai">
+                            <div class="col-md-12">
+                                <div class="floating-label ">
+                                    <input type="text" class="form-control" ng-model="vm.variables.ai_species">
+                                    <label ng-class="{'float':vm.variables.ai_species}">Species</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="floating-label ">
+                                    <input type="text" class="form-control" ng-model="vm.variables.ai_datetimeofheat">
+                                    <label ng-class="{'float':vm.variables.ai_datetimeofheat}">Date & Time of First Heat</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button type="button" class="btn btn-md btn-success" ng-click="vm.save(5)"><strong>SAVE REQUEST</strong></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-card col-md-3">
+                        <div class="progress-card-header" data-toggle="collapse" href="#rabies">
+                            <h3>Rabies Vaccination <span class="fa fa-plus"></span></h3>
+                        </div>
+                        <div class="progress-card-body collapse" id="rabies">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.rabies_nodogcat">
+                                        <label ng-class="{'float':vm.variables.rabies_nodogcat}">No. of Dogs/Cats</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button type="button" class="btn btn-md btn-success" ng-click="vm.save(8)"><strong>SAVE REQUEST</strong></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-card col-md-3">
+                        <div class="progress-card-header" data-toggle="collapse" href="#ad">
+                            <h3>Animal Dispersal <span class="fa fa-plus"></span></h3>
+                        </div>
+                        <div class="progress-card-body collapse" id="ad">
+                            <div class="col-md-12">
+                                <div class="floating-label ">
+                                    <input type="text" class="form-control" ng-model="vm.variables.ad_reason">
+                                    <label ng-class="{'float':vm.variables.ad_reason}">Reason</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button type="button" class="btn btn-md btn-success" ng-click="vm.save(6)"><strong>SAVE REQUEST</strong></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-card col-md-3">
+                        <div class="progress-card-header" data-toggle="collapse" href="#others">
+                            <h3>Others <span class="fa fa-plus"></span></h3>
+                        </div>
+                        <div class="progress-card-body collapse" id="others">
+                            <div class="col-md-12">
+                                <div class="floating-label ">
+                                    <input type="text" class="form-control" ng-model="vm.variables.others">
+                                    <label ng-class="{'float':vm.variables.others}">Others</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button type="button" class="btn btn-md btn-success" ng-click="vm.save(7)"><strong>SAVE REQUEST</strong></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="floating-label ">
+                            <input type="text" class="form-control" ng-model="vm.variables.behalf">
+                            <label ng-class="{'float':vm.variables.behalf}">Client Name</label>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="group-input">
+                            <div class="floating-label ">
+                                <input type="text" class="form-control" ng-model="vm.variables.technician" disabled>
+                                <label ng-class="{'float':vm.variables.technician}">Technician</label>
+                            </div>
+                            <div class="button-group-append">
+                                <button type="button" class="btn" ng-click="vm.openPersonnel(1)">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="group-input">
+                                <div class="floating-label ">
+                                    <input type="text" class="form-control" ng-model="vm.variables.receivedby" disabled>
+                                    <label ng-class="{'float':vm.variables.receivedby}">Received by</label>
+                                </div>
+                                <div class="button-group-append">
+                                    <button type="button" class="btn" ng-click="vm.openPersonnel(2)">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<!-- <button class="btn btn-md btn-success" ng-click="vm.save()">
+								<b>Save</b>
+                            </button> -->
+                            <button class="btn btn-lg btn-info" ng-click="vm.generateRequest()">
+								<b>PRINT CUSTOMER REQUEST</b>
+							</button>
+                            <button class="btn btn-lg btn-success" ng-click="vm.done()">
+								<b>DONE</b>
+							</button>
+							<button class="btn btn-lg btn-primary" ng-click="vm.clearFunction()">
+								<b>NEW</b>
+							</button>
+							<button class="btn btn-lg btn-danger" ng-click="vm.delete()">
+								<b>DELETE</b>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>

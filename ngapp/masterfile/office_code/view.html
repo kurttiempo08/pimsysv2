@@ -1,0 +1,234 @@
+<div class="animated fadeIn" ng-controller="OfficeCodeCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3><b>CHART OF ACCOUNT</b></h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 400px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.search" ng-change="vm.searching()">
+									<label ng-class="{'float':vm.search}">Search Account</label>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.searchcode" ng-change="vm.searchingcode()">
+									<label ng-class="{'float':vm.searchcode}">Search Code</label>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.searchuacs" ng-change="vm.searchinguacs()">
+									<label ng-class="{'float':vm.searchuacs}">Search UACS</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.office">
+									<label ng-class="{'float':vm.variables.office}">Account</label>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="floating-label">
+									<select class="form-control" ng-model="vm.variables.account_type">
+										<option value="INVENTORY" selected>INVENTORY</option>
+										<option value="ICS">ICS</option>
+										<option value="EXPENSE">EXPENSE</option>
+									</select>
+									<label ng-class="{'float':vm.variables.account_type}">Account Type</label>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="floating-label">
+									<select class="form-control" ng-model="vm.variables.formula">
+										<option></option>
+										<option value="noneweighted">Non-Weighted Average</option>
+									</select>
+									<label ng-class="{'float':vm.variables.formula}">Formula:(Default to wt. avr.)</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.office_code">
+									<label ng-class="{'float':vm.variables.office_code}">Account Code</label>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.office_UACS">
+									<label ng-class="{'float':vm.variables.office_UACS}">UACS</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 400px;" ui-grid="vm.typeGrid2" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.searchsub" ng-change=" vm.searchingSub()">
+									<label ng-class="{'float':vm.searchsub}">Search Subaccount</label>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.searchdesc" ng-change=" vm.searchingDesc()">
+									<label ng-class="{'float':vm.searchdesc}">Search Description</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="floating-label">
+									<div class="group-input">
+										<input type="text" class="form-control" ng-model="vm.variableSub.subaccount" ng-class="{'glow': vm.variableSub.subaccount}">
+										<div class="button-group-append">
+											<button type="button" ng-hide="vm.viewer" class="btn btn-info btn-sm" ng-click="vm.openSub()">
+												<i class="fa fa-search"></i>
+											</button>
+										</div>
+									</div>
+									<label ng-class="{'float': vm.variableSub.subaccount}">Sub Account</label>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variableSub.brand">
+									<label ng-class="{'float':vm.variableSub.brand}">Brand</label>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variableSub.stock_no">
+									<label ng-class="{'float':vm.variableSub.stock_no}">Stock no.</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="floating-label ">
+									<!-- <input type="text" class="form-control" ng-model="vm.variableSub.description"> -->
+									<textarea type="text" class="form-control" ng-model="vm.variableSub.description" rows="4"></textarea>
+									<label ng-class="{'float':vm.variableSub.description}">Description</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="floating-label">
+							<div class="group-input">
+								<input type="text" class="form-control" ng-model="vm.preparedby" ng-class="{'glow': vm.preparedby}" disabled>
+								<div class="button-group-append">
+									<button type="button" class="btn btn-info btn-sm" ng-click="vm.openSignatory(1)">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+							<label ng-class="{'float': vm.preparedby}">Prepared by:</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input type="text" class="form-control" ng-model="vm.desig1" ng-class="{'glow': vm.desig1}" disabled>
+							<label ng-class="{'float': vm.desig1}">Designation</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<div class="group-input">
+								<input type="text" class="form-control" ng-model="vm.approvedby" ng-class="{'glow': vm.approvedby}" disabled>
+								<div class="button-group-append">
+									<button type="button" class="btn btn-info btn-sm" ng-click="vm.openSignatory(2)">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+							<label ng-class="{'float': vm.approvedby}">Certified by:</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="floating-label">
+							<input type="text" class="form-control" ng-model="vm.desig2" ng-class="{'glow': vm.desig2}" disabled>
+							<label ng-class="{'float': vm.desig2}">Designation</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="floating-label">
+							<div class="group-input">
+								<input type="text" class="form-control" ng-model="vm.center_name" ng-class="{'glow': vm.center_name}" disabled>
+								<div class="button-group-append">
+									<button type="button" class="btn btn-info btn-sm" ng-click="vm.openDivision()">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+							<label ng-class="{'float': vm.center_name}">Center/Unit</label>
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-6 text-left">
+							<button class="btn btn-md btn-info" ng-click="vm.generateEnding()" ng-hide="vm.non_kalahi">
+								<b>Print Ending</b>
+							</button>
+							<button class="btn btn-md btn-info" ng-click="vm.generate_kalahi_Ending()" ng-hide="vm.kalahi">
+								<b>Print KALAHI Ending</b>
+							</button>
+							<button class="btn btn-md btn-info" ng-click="vm.generateEnding(1)" ng-hide="vm.non_kalahi">
+								<b>Print Ending Center/Program</b>
+							</button>
+							<button class="btn btn-md btn-info" ng-hide="vm.aa" ng-click="vm.generateAccount()">
+								<b>Print Account</b>
+							</button>
+							<button class="btn btn-md btn-info" ng-click="vm.generatecenter()">
+								<b>Print by center</b>
+							</button>
+							<button class="btn btn-md btn-success" ng-hide="vm.viewer" ng-click="vm.save()">
+								<b>Save</b>
+							</button>
+							<button class="btn btn-md btn-primary" ng-click="vm.clearFunction()">
+								<b>New/Clear</b>
+							</button>
+							<button class="btn btn-md btn-danger" ng-hide="vm.viewer" ng-click="vm.delete()">
+								<b>Delete</b>
+							</button>
+						</div>
+						<div class="col-md-6 text-right">
+							<button type="button" ng-hide="vm.viewer" class="btn btn-md btn-success" ng-click="vm.savesub()">
+								<b>Save Subaccount</b>
+							</button>
+							<button type="button" class="btn btn-md btn-primary" ng-click="vm.clearDetailFunction()">
+								<b>New/Clear</b>
+							</button>
+							<button type="button" ng-hide="vm.viewer" class="btn btn-md btn-danger" ng-click="vm.deletesub()">
+								<b>Delete</b>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

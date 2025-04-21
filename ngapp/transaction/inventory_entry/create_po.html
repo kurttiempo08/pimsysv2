@@ -1,0 +1,160 @@
+<div class="modal-content">
+    <div class="modal-title-div">
+        <strong class="modal-title-name">Create Purchase Order</strong>
+        <button class="modal-exit" ng-click="modal.close()">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <!-- <div class="row">
+            <div class="col-md-12">
+                <form ng-submit="modal.submitSearch()">
+                    <div class="input-icons">
+                        <i class="fa fa-search icon"></i>
+                        <input class="search-field" type="text" placeholder="Search Here..." autofocus ng-model="modal.search" ng-change="modal.searching">
+                    </div>
+                </form>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.po_num" ng-class="{'glow': modal.variables.po_num}">
+                    <label ng-class="{'float':modal.variables.po_num}">PO number</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.po_date" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': modal.variables.po_date}">
+                    <label ng-class="{'float': modal.variables.po_date}">PO Date</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <div class="group-input">
+                        <input type="text" class="form-control" ng-model="modal.variables.fund_name" ng-class="{'glow': modal.variables.fund_name}" disabled>
+                        <div class="button-group-append">
+                            <button class="btn btn-primary" ng-click="modal.openFund ()"><span class="fa fa-search"></span></button>
+                        </div>
+                    </div>
+                        <label ng-class="{'float':modal.variables.fund_name}">Fund Cluster</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <div class="group-input">
+                        <input type="text" class="form-control" ng-model="modal.variables.supplier" ng-class="{'glow': modal.variables.supplier}" disabled>
+                        <div class="button-group-append">
+                            <button class="btn btn-primary" ng-click="modal.openSupplier()"><span class="fa fa-search"></span></button>
+                        </div>
+                    </div>
+                        <label ng-class="{'float':modal.variables.supplier}">Supplier</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.sup_address" ng-class="{'glow': modal.variables.sup_address}" disabled>
+                    <label ng-class="{'float':modal.variables.sup_address}">Supplier Address</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.sup_tin" ng-class="{'glow': modal.variables.sup_tin}" disabled>
+                    <label ng-class="{'float':modal.variables.sup_tin}">Supplier TIN</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.mode_procurement" ng-class="{'glow': modal.variables.mode_procurement}">
+                    <label ng-class="{'float':modal.variables.mode_procurement}">Mode of procurement</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.orsburs_no" ng-class="{'glow': modal.variables.orsburs_no}">
+                    <label ng-class="{'float':modal.variables.orsburs_no}">ORS/BURS No.</label>
+                </div>
+            </div>
+            <!-- <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.award_date" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': modal.variables.award_date}">
+                    <label ng-class="{'float':modal.variables.award_date}">Award Date</label>
+                </div>
+            </div> -->
+        </div>
+        <div class="row">
+            
+            <!-- <div class="col-md-4">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.date_orsburs" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': modal.variables.date_orsburs}">
+                    <label ng-class="{'float':modal.variables.date_orsburs}">ORS/BURS Date</label>
+                </div>
+            </div> -->
+            <!-- <div class="col-md-3">
+                <div class="floating-label">
+                    <div class="group-input">
+                        <input type="text" class="form-control" ng-model="modal.variables.office" ng-class="{'glow': modal.variables.office}" disabled>
+                        <div class="button-group-append">
+                            <button class="btn btn-primary" ng-click="modal.openOffice()"><span class="fa fa-search"></span></button>
+                        </div>
+                    </div>
+                        <label ng-class="{'float':modal.variables.office}">Office</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.uacs_code" ng-class="{'glow': modal.variables.uacs_code}" disabled>
+                    <label ng-class="{'float':modal.variables.uacs_code}">UACS Code</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.office_code" ng-class="{'glow': modal.variables.orsburs_no}" disabled>
+                    <label ng-class="{'float':modal.variables.office_code}">Office Code</label>
+                </div>
+            </div> -->
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input type="text" class="form-control" ng-model="modal.variables.status" ng-class="{'glow': modal.variables.status}" disabled>
+                    <label ng-class="{'float':modal.variables.status}">Payment Status</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <input style="text-align: right;color: red;" type="text" class="form-control" ng-model="modal.variables.amount_orsburs" ng-class="{'glow': modal.variables.amount_orsburs}">
+                    <label ng-class="{'float':modal.variables.amount_orsburs}">Amount</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <div class="group-input">
+                        <input type="text" class="form-control" ng-model="modal.variables.center_name" ng-class="{'glow': modal.variables.center_name}" disabled>
+                        <div class="button-group-append">
+                            <button class="btn btn-primary" ng-click="modal.openDivision()"><span class="fa fa-search"></span></button>
+                        </div>
+                    </div>
+                        <label ng-class="{'float':modal.variables.center_name}">Center name</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="floating-label">
+                    <div class="group-input">
+                        <input type="text" class="form-control" ng-model="modal.variables.assigned_to" ng-class="{'glow': modal.variables.assigned_to}" disabled>
+                        <div class="button-group-append">
+                            <button class="btn btn-primary" ng-click="modal.openDivision(1)"><span class="fa fa-search"></span></button>
+                        </div>
+                    </div>
+                        <label ng-class="{'float':modal.variables.assigned_to}">Assign to</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button type="button" class="btn btn-success btn-md" ng-click="modal.save()"><b>SAVE</b></button>
+                <button type="button" class="btn btn-primary btn-md" ng-click="modal.clearFunction()"><b>NEW/CLEAR</b></button>
+            </div>
+        </div>
+    </div>
+</div>

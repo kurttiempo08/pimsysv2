@@ -1,0 +1,53 @@
+<div class="animated fadeIn" ng-controller="SignatoryCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-6">
+			<div class="progress-card-header">
+				<h3>Signatory List</h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="floating-label ">
+							<input type="text" class="form-control" ng-model="vm.search" ng-change="vm.searching()">
+							<label ng-class="{'float':vm.search}">Search Signatory</label>
+						</div>
+					</div>
+					<div class="col-md-12 bottom-margin">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 400px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="floating-label ">
+							<input type="text" class="form-control" ng-model="vm.variables.Signature">
+							<label ng-class="{'float':vm.variables.Signature}">Signatory</label>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="floating-label ">
+							<input type="text" class="form-control" ng-model="vm.variables.Designation">
+							<label ng-class="{'float':vm.variables.Designation}">Designation</label>
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button class="btn btn-default" ng-click="vm.clearFunction()">
+								<i class="fa fa-times fa-fw"></i>Clear
+							</button>
+							<button class="btn btn-primary" ng-click="vm.save()">
+								<i class="fa fa-save fa-fw"></i>Save
+							</button>
+							<button class="btn btn-danger" ng-click="vm.delete()">
+								<i class="fa fa-trash fa-fw"></i>Delete
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

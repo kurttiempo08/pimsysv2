@@ -1,0 +1,249 @@
+<div class="animated fadeIn" ng-controller="RisCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3><b>REQUISITION AND ISSUE SLIP</b></h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<!-- <div class="col-md-12">
+								<div style="height: 400px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div> -->
+                            <div class="col-md-3">
+                                <div class="floating-label">
+                                    <div class="group-input">
+                                        <input type="text" class="form-control" ng-model="vm.variables.ris_no" ng-class="{'glow': vm.variables.ris_no}" disabled>
+                                        <div class="button-group-append">
+                                            <button type="button" class="btn btn-primary btn-sm" ng-click="vm.openRis()">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <label ng-class="{'float': vm.variables.ris_no}">RIS number</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="floating-label">
+                                    <div class="group-input">
+                                        <input type="text" class="form-control" ng-model="vm.variables.responsibility_center" ng-class="{'glow': vm.variables.responsibility_center}">
+                                    </div>
+                                    <label ng-class="{'float': vm.variables.responsibility_center}">Responsibility Center</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="floating-label ">
+                                    <input type="text" class="form-control" ng-model="vm.variables.ris_date" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.ris_date}" >
+                                    <label ng-class="{'float': vm.variables.ris_date}">RIS date</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3" >
+                                <div class="floating-label" ng-hide="vm.aa">
+                                    <input type="text" class="form-control" ng-model="vm.variables.status" ng-class="{'glow': vm.variables.status}" disabled>
+                                    <label ng-class="{'float': vm.variables.status}" for="status">Status</label>
+                                </div>
+                            </div>
+						</div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="floating-label">
+                                    <div class="group-input">
+                                        <input type="text" class="form-control" ng-model="vm.variables.purpose" ng-class="{'glow': vm.variables.purpose}">
+                                    </div>
+                                    <label ng-class="{'float': vm.variables.purpose}">Purpose</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div style="height: 300px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="floating-label">
+                                    <div class="group-input">
+                                        <input type="text" class="form-control" ng-model="vm.variablesdtl.item_name" ng-class="{'glow': vm.variablesdtl.item_name}" disabled>
+                                        <div class="button-group-append">
+                                            <button type="button" class="btn btn-primary btn-sm" ng-click="vm.openPodtl()">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <label ng-class="{'float': vm.variablesdtl.item_name}">Item</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="floating-label">
+                                    <div class="group-input">
+                                        <input type="text" class="form-control" ng-model="vm.variablesdtl.description" ng-class="{'glow': vm.variablesdtl.description}" disabled>
+                                    </div>
+                                    <label ng-class="{'float': vm.variablesdtl.description}">Description</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="floating-label">
+                                    <div class="group-input">
+                                        <input type="text" name="txt_input" id="txt_input" class="form-control test" ng-model="vm.variablesdtl.property_no" ng-class="{'glow': vm.variablesdtl.property_no}" disabled>
+                                    </div>
+                                    <label ng-class="{'float': vm.variablesdtl.property_no}">Property#</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="floating-label">
+                                    <div class="group-input">
+                                        <input type="text" class="form-control" ng-model="vm.variablesdtl.unit" ng-class="{'glow': vm.variablesdtl.unit}" disabled>
+                                    </div>
+                                    <label ng-class="{'float': vm.variablesdtl.unit}">Unit</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="floating-label">
+                                    <div class="group-input">
+                                        <input type="text" class="form-control" style="text-align:right;color:red;" ng-model="vm.variablesdtl.qty" ng-class="{'glow': vm.variablesdtl.qty}">
+                                    </div>
+                                    <label ng-class="{'float': vm.variablesdtl.qty}">Qty</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label></label>
+                                <div class="group-input">
+                                    <button class="btn btn-md btn-success" ng-click="vm.save_dtl()">
+                                        <b>Add Item</b>
+                                    </button>
+                                    <button type="button" class="btn btn-md btn-danger" ng-click="vm.delete_dtl()">
+                                        <b>Remove Item</b>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <svg id="barcode"></svg>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="floating-label">
+                                    <div class="group-input">
+                                        <input type="text" class="form-control" ng-model="vm.variables.preparedby" ng-class="{'glow': vm.variables.preparedby}" disabled>
+                                        <div class="button-group-append">
+                                            <button type="button" class="btn btn-info btn-sm" ng-click="vm.openSignatory(1)">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <label ng-class="{'float': vm.variables.preparedby}">Requested by:</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="floating-label">
+                                    <input type="text" class="form-control" ng-model="vm.variables.desig1" ng-class="{'glow': vm.variables.desig1}" disabled>
+                                    <label ng-class="{'float': vm.variables.desig1}">Designation</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="floating-label">
+                                    <div class="group-input">
+                                        <input type="text" class="form-control" ng-model="vm.variables.approvedby" ng-class="{'glow': vm.variables.approvedby}" disabled>
+                                        <div class="button-group-append">
+                                            <button type="button" class="btn btn-info btn-sm" ng-click="vm.openSignatory(2)">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <label ng-class="{'float': vm.variables.approvedby}">Approved by:</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="floating-label">
+                                    <input type="text" class="form-control" ng-model="vm.variables.desig2" ng-class="{'glow': vm.variables.desig2}" disabled>
+                                    <label ng-class="{'float': vm.variables.desig2}">Designation</label>
+                                </div>
+                            </div>
+					</div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="floating-label">
+                                <div class="group-input">
+                                    <input type="text" class="form-control" ng-model="vm.variables.from" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.from}">
+                                </div>
+                                <label ng-class="{'float': vm.variables.from}">From:</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="floating-label">
+                                <div class="group-input">
+                                    <input type="text" class="form-control" ng-model="vm.variables.to" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': vm.variables.to}">
+                                </div>
+                                <label ng-class="{'float': vm.variables.to}">To:</label>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-3" ng-hide="vm.hide"> -->
+                        <div class="col-md-2">
+                            <div class="floating-label">
+                                <div class="group-input">
+                                    <input type="text" class="form-control" ng-model="vm.variables.center_name" ng-class="{'glow': vm.variables.center_name}" disabled>
+                                    <div class="button-group-append">
+                                        <button type="button" class="btn btn-info btn-sm" ng-click="vm.openCenter()">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <label ng-class="{'float': vm.variables.center_name}">Center/Unit/Division</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4"><br>
+                            <button class="btn btn-sm btn-warning" ng-click="vm.printEntireRsmi()">
+                                <b>PRINT ENTIRE RSMI</b>
+                            </button>
+                            <button class="btn btn-sm btn-warning" ng-click="vm.printRsmi('INVENTORY')">
+                                <b>PRINT RSMI-INVENTORY</b>
+                            </button>
+                            <button class="btn btn-sm btn-primary" ng-click="vm.printRsmi('ICS')">
+                                <b>PRINT RSMI-ICS</b>
+                            </button>
+                            <button class="btn btn-sm btn-success" ng-click="vm.printRsmi('EXPENSE')">
+                                <b>PRINT RSMI-EXPENSE</b>
+                            </button>
+                        </div>
+
+                        
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-md-6 text-right">
+                               
+                                <button class="btn btn-md btn-warning" ng-click="vm.printDistribution()">
+                                    <b>Print Distribution List</b>
+                                </button>
+                                <button class="btn btn-md btn-warning" ng-click="vm.printRis()">
+                                    <b>Print RIS</b>
+                                </button>
+                                <button type="button" class="btn btn-md btn-primary" ng-click="vm.clearFunction()">
+                                    <b>New/Clear</b>
+                                </button>
+                                <button type="button" class="btn btn-md btn-primary" ng-click="vm.cleardtl()">
+                                    <b>Clear item</b>
+                                </button>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <button type="button" class="btn btn-md btn-success" ng-click="vm.save()">
+                                    <b>Save RIS</b>
+                                </button>
+                                <button type="button" class="btn btn-md btn-success" ng-click="vm.approved()">
+                                    <b>Approved RIS</b>
+                                </button>
+                                <button type="button" class="btn btn-md btn-danger" ng-click="vm.delete()">
+                                    <b>Delete RIS</b>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

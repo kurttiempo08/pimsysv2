@@ -1,0 +1,66 @@
+<div class="modal-content">
+    <div class="modal-title-div">
+        <strong class="modal-title-name">Add Payment</strong>
+        <button class="modal-exit" ng-click="modal.close()">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="height: 300px;" ui-grid="modal.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.po_num" ng-class="{'glow': modal.variables.po_num}" disabled>
+                        <label ng-class="{'float':modal.variables.po_num}" >PO number</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.ada_date" datepicker="" dp-format="mm-dd-yyyy" ng-class="{'glow': modal.variables.ada_date}">
+                        <label ng-class="{'float': modal.variables.ada_date}">ADA Date</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.jev_number" ng-class="{'glow': modal.variables.jev_number}">
+                        <label ng-class="{'float':modal.variables.jev_number}" >JEV no.</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.ada_number" ng-class="{'glow': modal.variables.ada_number}">
+                        <label ng-class="{'float':modal.variables.ada_number}" >ADA no.</label>
+                    </div>
+                </div>
+                <div class="col-md-3 pull-right">
+                    <div class="floating-label">
+                        <input style="color: red;text-align: right;" type="text" class="form-control" ng-change="modal.compute()" ng-model="modal.amount_orsburs" ng-class="{'glow': modal.amount_orsburs}" disabled>
+                        <label ng-class="{'float':modal.amount_orsburs}" >Unpaid Amount</label>
+                    </div>
+                </div>
+                <div class="col-md-3 pull-right">
+                    <div class="floating-label">
+                        <input style="color: red;text-align: right;" type="text" class="form-control" ng-model="modal.totalada" ng-class="{'glow': modal.totalada}" disabled>
+                        <label ng-class="{'float':modal.totalada}" >Total ADA amount</label>
+                    </div>
+                </div>
+                <div class="col-md-3 pull-right">
+                    <div class="floating-label">
+                        <input style="color: red;text-align: right;" type="text" class="form-control" ng-change="modal.compute()" ng-model="modal.variables.payment_amt" ng-class="{'glow': modal.variables.payment_amt}">
+                        <label ng-class="{'float':modal.variables.payment_amt}" >ADA Amount</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-md btn-success" ng-click="modal.save()">SAVE</button>
+                    <button class="btn btn-md btn-primary" ng-click="modal.clearFunction()">CLEAR</button>
+                    <button class="btn btn-md btn-danger" ng-click="modal.delete()">DELETE</button>
+                    <button class="btn btn-md btn-danger" ng-click="modal.close()">CLOSE</button>
+                </div>    
+            </div>
+    </div>

@@ -1,0 +1,59 @@
+<div class="footer-modal-box footer-modal-body-max-width" ng-class="{'minimize': vm.minimizeCB}">
+    <div class="progress-card green">
+        <div class="progress-card-header" ng-click="vm.minimizeModals('CB')">
+            <div class="header-button-group">
+                <h4>Deposit/Bond</h4>
+                <div class="btn-group">
+                    <button type="button" class="btn-clear" ng-click="vm.showModals('CB', false)">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="progress-card-body" ng-class="{'minimize': vm.minimizeCB}">
+            <form ng-submit="vm.append(3)">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="floating-label">
+                            <input type="text" class="form-control" ng-model="vm.construction.AcctGroupCode" ng-class="{'glow': vm.construction.AcctGroupCode}"
+                                disabled>
+                            <label ng-class="{'float': vm.construction.AcctGroupCode}">Code</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="floating-label">
+                            <select class="form-control" ng-model="vm.construction.Particulars" ng-class="{'glow': vm.construction.Particulars}" required
+                                ng-change="vm.changeCOA(vm.construction.Particulars, 'CB')">
+                                <option></option>
+                                <option ng-repeat="x in vm.COACBList">{{x.ChAcctGroupCodeName}}</option>
+                            </select>
+                            <label ng-class="{'float': vm.construction.Particulars}">Particulars</label>
+                        </div>
+                        <!-- <div class="floating-label">
+                            <input type="text" class="form-control" ng-model="vm.construction.Particulars" ng-class="{'glow': vm.construction.Particulars}"
+                                focus-me="vm.showCB" required>
+                            <label ng-class="{'float': vm.construction.Particulars}">Particulars</label>
+                        </div> -->
+                    </div>
+                    <div class="col-md-12">
+                        <div class="floating-label">
+                            <input type="text" class="form-control text-right" ng-model="vm.construction.AmountDue" ng-class="{'glow': vm.construction.AmountDue}"
+                                only-numbers-wo-negative required>
+                            <label ng-class="{'float': vm.construction.AmountDue}">Amount</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="floating-label">
+                            <textarea rows="3" class="form-control" ng-model="vm.construction.Remarks" style="resize: none;" ng-class="{'glow': vm.construction.Remarks}"></textarea>
+                            <label ng-class="{'float':vm.construction.Remarks}">Explaination</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-lg btn-green full-width" type="submit">
+                            <i class="fa fa-plus fa-fw"></i>Append</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

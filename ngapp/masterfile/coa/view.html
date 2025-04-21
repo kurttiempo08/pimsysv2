@@ -1,0 +1,120 @@
+<div class="animated fadeIn" ng-controller="ChartofAccountCtrl as vm">
+	<div class="row">
+		<div class="progress-card col-md-12">
+			<div class="progress-card-header">
+				<h3>Chart of Account</h3>
+			</div>
+			<div class="progress-card-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 400px;" ui-grid="vm.typeGrid" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.AcctCode">
+									<label ng-class="{'float':vm.variables.AcctCode}">Account Code</label>
+								</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variables.AcctGroupName">
+									<label ng-class="{'float':vm.variables.AcctGroupName}">Account Group name</label>
+								</div>
+                            </div>
+                        </div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<div style="height: 300px;" ui-grid="vm.typeGrid2" ui-grid-selection ui-grid-resize-columns></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variablesdtl.ChASubCode">
+									<label ng-class="{'float':vm.variablesdtl.ChASubCode}">Acct Sub Group</label>
+								</div>
+                            </div>
+                            <div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variablesdtl.ChADetails">
+									<label ng-class="{'float':vm.variablesdtl.ChADetails}">Acct Details</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<div class="group-input">
+											<input type="text" class="form-control" ng-model="vm.variablesdtl.TotalToAcctDtl">
+											<label ng-class="{'float':vm.variablesdtl.TotalToAcctDtl}">Totalling</label>
+											<div class="button-group-append">
+												<button type="button" class="btn" ng-click="vm.openModal()">
+													<i class="fa fa-search"></i>
+												</button>
+											</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<input type="text" class="form-control" ng-model="vm.variablesdtl.TotalToAcctCode">
+									<label ng-class="{'float':vm.variablesdtl.TotalToAcctCode}">Code</label>
+								</div>
+                            </div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="floating-label ">
+									<div class="group-input">
+										<input type="text" class="form-control" ng-model="vm.variablesdtl.CFcategory">
+										<label ng-class="{'float':vm.variablesdtl.CFcategory}">Cash Category</label>
+										<div class="button-group-append">
+											<button type="button" class="btn" ng-click="vm.openCash()">
+												<i class="fa fa-search"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-md-6 text-left">
+							<button class="btn btn-md btn-success" ng-click="vm.save()">
+								<b>SAVE</b>
+							</button>
+							<button class="btn btn-md btn-primary" ng-click="vm.clearFunction()">
+								<b>CLEAR ALL</b>
+							</button>
+							<button class="btn btn-md btn-danger" ng-click="vm.delete()">
+								<b>DELETE</b>
+							</button>
+						</div>
+						<div class="col-md-6 text-right">
+							<button class="btn btn-md btn-success" ng-click="vm.saveGroup()">
+								<b>SAVE GROUP</b>
+							</button>
+							<button class="btn btn-md btn-primary" ng-click="vm.cleardtlFunction()">
+								<b>CLEAR GROUP</b>
+							</button>
+							<!-- <button class="btn btn-md btn-warning" ng-click="vm.clearFunction()">
+								<b>ADD CASHFLOW</b>
+							</button> -->
+							<button class="btn btn-md btn-danger" ng-click="vm.deletedtl()">
+								<b>DELETE GROUP</b>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
